@@ -1,0 +1,398 @@
+<?php 
+/* column dictionary
+0	Checkbox			Checkbox
+1   Parametres          Software
+2   Info Facturation    Client 
+3   Info Facturation    Commande 
+4   Info Facturation    Facture 
+5   Info Facturation    HT 
+6   Numero Message      Numéro Message 
+7   Numero Message      Nom Message 
+8   Numero Message      View Message 
+9   Numero Message      Lien pour télécharger 
+10  Numero Message      Objet du message 
+11  Numero Message      Type 
+12  Corps du Message    Famille d'articles 
+13  Corps du Message    Société 
+14  Corps du Message    Commercial 
+15  Corps du Message    E-mail du corps 
+16  Corps du Message    Telephone 
+17  Segment             Numéro Segment 
+18  Segment             Segment Part 
+19  Segment             Nom Segment 
+20  Segment             Critere 1 
+21  Segment             Critere 2 
+22  Segment             As Many Criterias As Necessary 
+23  Envoi               Date envoi 
+24  Envoi               Date limite de fin 
+25  Envoi               Stats 
+26  Envoi               Quantité à envoyer 
+27  Envoi               Quantité envoyée 
+28  Envoi               Open 
+29  Envoi               %Open 
+30  Envoi               Click 
+31  Envoi               %Click 
+32  Envoi               verification number sent by manager 
+33  Envoi               Number sent through form 
+34  Envoi               Number sent through mails 
+35  Deliv Test          ORANGE/WANADOO 
+36  Deliv Test          FREE 
+37  Deliv Test          SFR 
+38  Deliv Test          GMAIL 
+39  Deliv Test          MICROSOFT 
+40  Deliv Test          YAHOO 
+41  Deliv Test          OVH 
+42  Deliv Test          1AND1 
+43  Deliv Reel          Bounce 
+44  Deliv Reel          %Bounce 
+45  Deliv Reel          Hard Bounce Rate 
+46  Deliv Reel          Soft Bounce Rate 
+47  Deliv Reel          ORANGE/WANADOO 
+48  Deliv Reel          FREE 
+49  Deliv Reel          SFR 
+50  Deliv Reel          GMAIL 
+51  Deliv Reel          MICROSOFT 
+52  Deliv Reel          YAHOO 
+53  Deliv Reel          OVH 
+54  Deliv Reel          1AND1 
+55  Technical           Opérateur qui envoie 
+56  Technical           number sent simultaneaously 
+57  Technical           Physical Server 
+58  Technical           Provider 
+59  Technical           IP 
+60  Technical           SMTP 
+61  Technical           Rotation 
+62  Technical           Domain 
+63  Technical           Computer 
+64  Technical           Sender E-mail 
+65  Technical           Manual sender
+66  Technical           email domain 
+67  Technical           Copy mail 
+68  Technical           Speed Hours 
+69  Technical           Number Hours 
+
+*/
+?>
+<script>
+var global_column = [
+	'checkbox',
+	'software',
+	'client',
+	'commande',
+	'facture',
+	'ht',
+	'message_id',
+	'message_name',
+	'message_view',
+	'message_lien',
+	'message_object',
+	'message_type',
+	'message_famille',
+	'message_societe',
+	'message_commercial',
+	'message_email',
+	'message_telephone',
+	'segment_numero',
+	'segment_part',
+	'segment_nom',
+	'segment_critere_one',
+	'segment_critere_two',
+	'segment_many_criterias',
+	'date_envoi',
+	'date_limite_de_fin',
+	'stats',
+	'quantite_envoyer',
+	'openemm_current',
+	'openemm_number_of_open',
+	'openemm_open_rate',
+	'openemm_number_of_click',
+	'openemm_click_rate',
+	'verification_number',
+	'number_sent_through',
+	'number_sent_mail',
+	'deliv_sur_test_orange',
+	'deliv_sur_test_free',
+	'deliv_sur_test_sfr',
+	'deliv_sur_test_gmail',
+	'deliv_sur_test_microsoft',
+	'deliv_sur_test_yahoo',
+	'deliv_sur_test_ovh',
+	'deliv_sur_test_oneandone',
+	'deliv_reelle_bounce',
+	'deliv_reelle_bounce_percentage',
+	'deliv_reelle_hard_bounce_rate',
+	'deliv_reelle_soft_bounce_rate',
+	'deliv_reelle_orange',
+	'deliv_reelle_free',
+	'deliv_reelle_sfr',
+	'deliv_reelle_gmail',
+	'deliv_reelle_microsoft',
+	'deliv_reelle_yahoo',
+	'deliv_reelle_ovh',
+	'deliv_reelle_oneandone',
+	'operateur_qui_envoie',
+	'number_sent',
+	'physical_server',
+	'provider',
+	'ip',
+	'smtp',
+	'rotation',
+	'domain',
+	'computer',
+	'manual_sender',
+	'manual_sender_domain',
+	'copy_mail',
+	'speed_hours',
+	'number_hours'
+];
+
+var default_header = [
+	'software',
+	'client',
+	'message_id',
+	'message_famille',
+	'segment_numero',
+	'date_envoi',
+	'deliv_sur_test_orange',
+	'deliv_reelle_bounce',
+	'operateur_qui_envoie',
+	'number_hours',
+];		
+
+var header_manual_sending = [
+	'software',
+	'client',
+	'message_id',
+	'message_famille',
+	'segment_numero',
+	'date_envoi',
+	'deliv_sur_test_orange',
+	'deliv_reelle_bounce',
+	'operateur_qui_envoie',
+	'manual_sender_domain'
+];	
+						
+var header_commerciale = [
+	'software',
+	'client',
+	'message_id',
+	'message_famille',
+	'segment_numero',
+	'date_envoi',
+	'operateur_qui_envoie',
+];
+
+var header_max_bulk = [
+	'software',
+	'client',
+	'message_id',
+	'message_famille',
+	'segment_numero',
+	'date_envoi',
+	'deliv_sur_test_orange',
+	'deliv_reelle_bounce',
+	'operateur_qui_envoie',
+	'number_hours'
+];	
+						
+var header_synthethique = [
+	'software',
+	'client',
+	'message_name',
+	'date_envoi',
+	'openemm_number_of_open',
+	'deliv_reelle_bounce_percentage'
+];
+
+var header_openemm = [
+	'software',
+	'client',
+	'message_id',
+	'message_famille',
+	'segment_numero',
+	'date_envoi',
+	'deliv_sur_test_orange',
+	'deliv_reelle_bounce',
+	'operateur_qui_envoie',
+	'number_hours'
+
+];
+
+var hide_manual_sending = [
+	'openemm_number_of_open',
+	'openemm_open_rate',
+	'openemm_number_of_click',
+	'openemm_click_rate',						
+	'physical_server',
+	'provider',
+	'ip',
+	'smtp',
+	'rotation',
+	'domain',
+	'computer',
+	'copy_mail',
+	'speed_hours',
+	'number_hours',
+];
+
+var hide_pages_jaunes = [
+	'segment_numero',
+	'segment_part',
+	'segment_nom',
+	'segment_critere_one',
+	'segment_critere_two',
+	'segment_many_criterias',
+	'stats',
+	'openemm_number_of_open',
+	'openemm_open_rate',
+	'openemm_number_of_click',
+	'openemm_click_rate',
+	'deliv_sur_test_orange',
+	'deliv_sur_test_free',
+	'deliv_sur_test_sfr',
+	'deliv_sur_test_gmail',
+	'deliv_sur_test_microsoft',
+	'deliv_sur_test_yahoo',
+	'deliv_sur_test_ovh',
+	'deliv_sur_test_oneandone',
+	'deliv_reelle_bounce',
+	'deliv_reelle_bounce_percentage',
+	'deliv_reelle_hard_bounce_rate',
+	'deliv_reelle_soft_bounce_rate',
+	'deliv_reelle_orange',
+	'deliv_reelle_free',
+	'deliv_reelle_sfr',
+	'deliv_reelle_gmail',
+	'deliv_reelle_microsoft',
+	'deliv_reelle_yahoo',
+	'deliv_reelle_ovh',
+	'deliv_reelle_oneandone',								
+	'physical_server',
+	'provider',
+	'ip',
+	'smtp',
+	'rotation',
+	'domain',
+	'computer',
+	'speed_hours',
+	'number_hours',
+	'manual_sender_domain',
+	'manual_sender',
+	'number_sent'
+];
+
+var hide_max_bulk = [
+	'copy_mail',
+	'manual_sender_domain',
+	'manual_sender',
+	'rotation'
+];
+				
+var hide_openemm = [
+	'copy_mail',
+	'manual_sender_domain',
+	'manual_sender',
+	'computer'
+];				
+					
+var hide_commerciale = [
+	'message_email',
+	'message_telephone',
+	'verification_number',
+	'number_sent_through',
+	'number_sent_mail',
+	'stats',
+	'openemm_number_of_open',
+	'openemm_open_rate',
+	'openemm_number_of_click',
+	'openemm_click_rate',
+	'deliv_sur_test_orange',
+	'deliv_sur_test_free',
+	'deliv_sur_test_sfr',
+	'deliv_sur_test_gmail',
+	'deliv_sur_test_microsoft',
+	'deliv_sur_test_yahoo',
+	'deliv_sur_test_ovh',
+	'deliv_sur_test_oneandone',
+	'deliv_reelle_bounce',
+	'deliv_reelle_bounce_percentage',
+	'deliv_reelle_hard_bounce_rate',
+	'deliv_reelle_soft_bounce_rate',
+	'deliv_reelle_orange',
+	'deliv_reelle_free',
+	'deliv_reelle_sfr',
+	'deliv_reelle_gmail',
+	'deliv_reelle_microsoft',
+	'deliv_reelle_yahoo',
+	'deliv_reelle_ovh',
+	'deliv_reelle_oneandone',								
+	'physical_server',
+	'provider',
+	'ip',
+	'smtp',
+	'rotation',
+	'domain',
+	'computer',
+	'speed_hours',
+	'number_hours',
+	'manual_sender_domain',
+	'manual_sender',
+	'number_sent',
+	'copy_mail'
+];
+
+var hide_synthethique = [
+	'commande',
+	'facture',
+	'ht',
+	'message_id',
+	'message_lien',
+	'message_object',
+	'message_famille',
+	'message_societe',
+	'message_commercial',
+	'message_email',
+	'message_telephone',
+	'segment_numero',
+	'segment_part',
+	'segment_critere_one',
+	'segment_critere_two',
+	'segment_many_criterias',
+	'stats',
+	'verification_number',
+	'number_sent_through',
+	'number_sent_mail',
+	'deliv_sur_test_orange',
+	'deliv_sur_test_free',
+	'deliv_sur_test_sfr',
+	'deliv_sur_test_gmail',
+	'deliv_sur_test_microsoft',
+	'deliv_sur_test_yahoo',
+	'deliv_sur_test_ovh',
+	'deliv_sur_test_oneandone',
+	'deliv_reelle_hard_bounce_rate',
+	'deliv_reelle_soft_bounce_rate',
+	'deliv_reelle_orange',
+	'deliv_reelle_free',
+	'deliv_reelle_sfr',
+	'deliv_reelle_gmail',
+	'deliv_reelle_microsoft',
+	'deliv_reelle_yahoo',
+	'deliv_reelle_ovh',
+	'deliv_reelle_oneandone',
+	'operateur_qui_envoie',
+	'number_sent',
+	'physical_server',
+	'provider',
+	'ip',
+	'smtp',
+	'rotation',
+	'domain',
+	'computer',
+	'manual_sender',
+	'manual_sender_domain',
+	'copy_mail',
+	'speed_hours',
+	'number_hours'
+];
+</script>

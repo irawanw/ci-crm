@@ -1,0 +1,538 @@
+<?php
+    if(!isset($mass_action_toolbar))    $mass_action_toolbar    = '';
+    if(!isset($mass_action_checkbox))   $mass_action_checkbox   = '';
+    if(!isset($recherche_toolbar))      $recherche_toolbar      = true;
+    if(!isset($view_toolbar))           $view_toolbar           = '';
+    if(!isset($custom_toolbar))         $custom_toolbar         = '';
+    if(!isset($external_toolbar))       $external_toolbar       = '';
+?>
+<style>
+    textarea.message{
+        width: 95%;
+        height: 350px;
+        margin-bottom: 5px;
+        padding: 10px;
+    }
+</style>
+
+<!-- toolbar de la grille -->
+<script id="li_toolbar" type="text/x-kendo-template">
+    <form class="form-inline text-left">
+    <?php
+    //toolbar for mass action
+    if($mass_action_toolbar):
+    ?>
+        <div class="form-group">
+            <label for="action">Actions de masse</label>
+            <select class="form-control input-sm" id="sel_action_all">
+                <option value="archiver">Archiver</option>
+                <option value="remove">Supprimer</option>
+            </select>
+            <button type="button" class="btn btn-default btn-xs" id="btn_action_all">Ok</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    <?php endif; ?>
+
+    <?php if($recherche_toolbar): ?>
+        <div class="form-group">
+            <label for="recherche">Recherche</label>
+            <input type="search" class="form-control input-sm" id="recherche" placeholder="Chercher..." data-bind="events: {keypress: searchGrid}">
+        </div>
+    <?php endif; ?>
+
+        <?php
+        //toolbar for different view mode
+        if($view_toolbar):
+        ?>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="form-group">
+            <label for="action">Vue</label>
+            <select class="form-control input-sm" id="sel_view">
+                <option value="">[Select]</option>
+                <option <?php if(uri_string()==$controleur) echo "selected"; ?>
+                    value="<?php echo site_url($controleur); ?>">En cours</option>
+                <option <?php if(uri_string()==$controleur.'/archiver') echo "selected"; ?>
+                    value="<?php echo site_url($controleur.'/archiver'); ?>">Archivées</option>
+                <option <?php if(uri_string()==$controleur.'/supprimees') echo "selected"; ?>
+                    value="<?php echo site_url($controleur.'/supprimees'); ?>">Supprimées</option>
+                <option <?php if(uri_string()==$controleur.'/all') echo "selected"; ?>
+                    value="<?php echo site_url($controleur.'/all'); ?>">Tout</option>
+            </select>
+        </div>
+        <?php endif; ?>
+
+        <?php
+        if($custom_toolbar)
+        {
+            echo $custom_toolbar;
+        }
+
+        //load external toolbar view
+        if($external_toolbar)
+        {
+            $this->view($controleur.'/'.$external_toolbar, $external_toolbar_data);
+        }
+
+        ?>
+    </form>
+</script>
+
+<!-- Initialisation de la grille -->
+<script>
+    var datasource = new kendo.data.DataSource({
+        transport: {
+            read:  {
+                url: "<?php echo site_url($descripteur['datasource']."_json/$id")?>",
+                dataType: "json"
+            }
+        },
+        pageSize: 10,
+        schema: {
+            model: {
+                fields: {
+                    actions: {},
+                    gestion_heures_id: {},
+                    ville: {},
+                    urbain: {type: "number"},
+                    heures_de_distribution_urbain: {type: "number"},
+                    rural: {type: "number"},
+                    heures_de_distribution_rural: {type: "number"},
+                    controle_autres: {},
+                    kilometres: {type: "number"},
+                    frais_kilometres: {type: "number"}
+                },
+                id: ""
+            }
+        },
+        aggregate:  [
+            {
+                field: "urbain",
+                aggregate: "sum"
+            },
+            {
+                field: "heures_de_distribution_urbain",
+                aggregate: "sum"
+            },
+            {
+                field: "rural",
+                aggregate: "sum"
+            },
+            {
+                field: "heures_de_distribution_rural",
+                aggregate: "sum"
+            },
+            {
+                field: "controle_autres",
+                aggregate: "sum"
+            },
+            {
+                field: "kilometres",
+                aggregate: "sum"
+            },
+            {
+                field: "frais_kilometres",
+                aggregate: "sum"
+            },
+        ]
+    });
+
+    var ListValuesServiceBaseUrl = "<?php echo site_url("listes_valeurs/get")?>";
+
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("#grid").kendoGrid({
+            toolbar: kendo.template($("#li_toolbar").html()),
+            columns: [
+                {
+                    headerTemplate: '<input type="checkbox" id="check-all" />',
+                    template: '<input type="checkbox" class="checkbox" name="ids[]" value="#: <?php echo $descripteur['detail'][1];?> #"/>',
+                    filterable: false,
+                    title: "(sélecteur)"
+                },
+                {
+                    field: "gestion_heures_id",
+                    title: "Gestion heures#",
+                    template : '#if (gestion_heures_id  == 0) {# &nbsp; #} else {# <a href="<?php echo site_url('gestion_heures/detail/#:');?> gestion_heures_id # ">#: gestion_heures_id # </a>#}#',
+                    filterable: { cell: { operator: "contains" } }
+                },
+                {
+                    field: "ville",
+                    title: "Ville",
+                    filterable: { cell: { operator: "contains" } }
+                },
+                {
+                    field: "urbain",
+                    title: "Urbain",
+                    footerTemplate: "Total : #=sum#",
+                    filterable: { cell: { operator: "contains" } }
+                },
+                {
+                    field: "heures_de_distribution_urbain",
+                    title: "Heures De Distribution",
+                    footerTemplate: "Total : #=kendo.toString(sum, '0.00')#",
+                    filterable: { cell: { operator: "contains" } }
+                },
+                {
+                    field: "rural",
+                    title: "Rural",
+                    footerTemplate: "Total : #=sum#",
+                    filterable: { cell: { operator: "contains" } }
+                },
+                {
+                    field: "heures_de_distribution_rural",
+                    title: "Heures De Distribution",
+                    footerTemplate: "Total : #=kendo.toString(sum, '0.00')#",
+                    filterable: { cell: { operator: "contains" } }
+                },
+                {
+                    field: "controle_autres",
+                    title: "Heures de controle ou autres",
+                    footerTemplate: "Total : #=sum#",
+                    filterable: { cell: { operator: "contains" } }
+                },
+                {
+                    field: "kilometres",
+                    title: "Kilometres",
+                    footerTemplate: "Total : #=sum#",
+                    filterable: { cell: { operator: "contains" } }
+                },
+                {
+                    field: "frais_kilometres",
+                    title: "Frais kilométriques",
+                    footerTemplate: "Total : #=kendo.toString(sum, '0.00')#",
+                    filterable: { cell: { operator: "contains" } }
+                }
+            ],
+            dataSource: datasource,
+            scrollable: false,
+            pageable: true,
+            sortable: true,
+            filterable: {
+                mode: "row"
+            },
+            selectable: true,
+            reorderable: true,
+            resizable: true,
+            pdf: {
+                allPages: true,
+                fileName: "gestion_heures-index.pdf"
+            },
+            excel: {
+                allPages: true,
+                fileName: "gestion_heures-index.xlsx"
+            },
+            dataBound: function(e) {
+                afterLoaded();
+            }
+        });
+        var grid = $("#grid").data("kendoGrid");
+
+        // recherche intégrale
+        $("#recherche").on("keyup change paste", searchGrid);
+
+        function searchGrid(){
+            var searchValue = $.trim($(this).val());
+            grid.dataSource.query({
+                page:1,
+                pageSize:10,
+                filter:{
+                    logic:"or",
+                    filters:[
+                        {
+                            field: "gestion_heures_id",
+                            operator: "contains",
+                            value: searchValue
+                        },
+                        {
+                            field: "ville",
+                            operator: "contains",
+                            value: searchValue
+                        },
+                        {
+                            field: "controle_autres",
+                            operator: "contains",
+                            value: searchValue
+                        }                    ]
+                }
+            });
+            $(".k-filter-row .k-input").val('');
+        }
+
+        $("#exportExcel").click(function(e) {
+            grid.saveAsExcel();
+        });
+        $("#exportPdf").click(function(e) {
+            grid.saveAsPDF();
+        });
+
+        // réglage de l'ordre et de la visibilité des colonnes
+        $("#rule_list").click(function(e) {
+            e.preventDefault();
+            var colonnes = grid.columns;
+            var html = '';
+            for (var i=0;i<colonnes.length;i++) {
+                var checked = ' checked';
+                if (colonnes[i].hidden == true) {
+                    checked = '';
+                }
+                html += '<li><div class="checkbox"><label><input type="checkbox" value="'+i+'"'+checked+'>'+colonnes[i].title+'</label></div></li>';
+            }
+            $("#liste_colonnes").html(html);
+            $("#liste_colonnes").kendoSortable({
+                ignore: "input",
+                cursor: "move",
+                hint: function(element) {
+                    return $("<span></span>")
+                        .text(element.text());
+                }
+            });
+            $('#popup_reglage').modal('show');
+        });
+
+        $("#toutes_colonnes").click(function(e) {
+            var etat = $(this).prop('checked');
+            var champs = $("#liste_colonnes").data("kendoSortable");
+            var items = champs.items();
+            for (var i=0;i<items.length;i++) {
+                var item = items[i].children[0].children[0].children[0];
+                item.checked=etat;
+            }
+        });
+
+        $("#popup_reglage_sauver").click(function(e) {
+            var colonnes = grid.columns;
+            var champs = $("#liste_colonnes").data("kendoSortable");
+            var items = champs.items();
+            for (var i=0;i<items.length;i++) {
+                var item = items[i].children[0].children[0].children[0];
+                var rang = parseInt(item.value);
+                if (item.checked) {
+                    grid.showColumn(rang);
+                }
+                else {
+                    grid.hideColumn(rang);
+                }
+            }
+            for (var i=0;i<items.length;i++) {
+                var item = items[i].children[0].children[0].children[0];
+                var rang = parseInt(item.value);
+                if (rang > i) {
+                    grid.reorderColumn(i, colonnes[rang]);
+                }
+            }
+        });
+
+        // sauvegarde de la vue courante
+        $("#save_list").click(function(e) {
+            e.preventDefault();
+            var vue = prompt("Nom de la vue", "ma vue");
+            var controleur = 'gestion_heures';
+            var data = kendo.stringify(grid.getOptions());
+            $.post( "<?php echo site_url('vues/nouvelle');?>", {vue:vue, data:data, ctrl:controleur}, function( data ) {
+                if (data) {
+                    $('#liste_vues').append('<li><a href="#'+data+'">'+vue+'</a></li>');
+                    notificationWidget.show("La vue a été sauvegardée","success");
+                }
+                else {
+                    notificationWidget.show("Un problème technique a empéché la sauvegarde de la vue","error");
+                }
+            });
+        });
+
+        // liste des vues enregistrées
+        $("#liste_vues").click(function(e) {
+            e.preventDefault();
+            var hash = e.target.hash;
+            var id = hash.substr(1);
+            $.post( "<?php echo site_url('vues/reglages');?>", {id_vue:id}, function( data ) {
+                if (data) {
+                    grid.setOptions(JSON.parse(data));
+                }
+            });
+        });
+
+        //mass action
+        $("#btn_action_all").click(function(e) {
+            var action = $("#sel_action_all" ).val();
+            theid = {};
+            $("tbody[role='rowgroup'] input:checkbox:checked").each(function(i){
+                theid[i] = $(this).val();
+                $(this).parent().parent().fadeOut();
+            });
+            $.ajax({
+                type: "POST",
+                url: "<?php echo site_url('gestion_heures/mass_');?>" + action,
+                data: {ids: JSON.stringify(theid)},
+            });
+        })
+
+        //check/uncheck all boxes
+        $("#check-all").click(function(e) {
+            $("tbody[role='rowgroup'] input:checkbox").not(this).prop('checked', this.checked);
+        });
+
+        //change list view
+        $('#sel_view').change(function(){
+            window.location = ($('#sel_view option:selected').val());
+        })
+
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $(".export-file-excel, .export-file-pdf").kendoWindow({
+            modal: true,
+            visible: false
+        });
+        $(".export-file-excel").data("kendoWindow")
+            .title("Export liste to xlsx");
+
+        $(".export-file-pdf").data("kendoWindow")
+            .title("Export liste to pdf");
+
+        // gestion de la barre d'actions
+        // masquage d'une action
+        function masque(action) {
+            var id_action = '#' + action;
+            $(id_action + ' a').attr('href', '#');
+            $(id_action).addClass('disabled');
+        }
+
+        // démasquage d'une action
+        function demasque(action, id) {
+            var id_action = '#' + action;
+            var cible = $(id_action + ' a').attr("data-cible") + '/' + id;
+            $(id_action + ' a').attr('href', cible);
+            $(id_action).removeClass('disabled');
+        }
+
+        function demasque_js(action, script) {
+            var id_action = '#' + action;
+            $(id_action + ' a').attr('href', 'javascript:'+script);
+            $(id_action).removeClass('disabled');
+        }
+
+        // sélection d'un contact
+        function row_select() {
+            var grid = $("#grid").data("kendoGrid");
+            var rows = grid.select();
+            var record = grid.dataItem(rows[0]);
+            var id = record.gestion_heures_id;
+
+            // démasquage des boutons de la barre action
+            demasque('gestion_heures_detail', id);
+            demasque('gestion_heures_modification', id);
+            demasque('gestion_heures_supprimer', id);
+        }
+
+        // liaison avec la grille
+        var grid = $("#grid").data("kendoGrid");
+        grid.bind("change", row_select);
+
+        // confirmation de suppression
+        $("#gestion_heures_supprimer").click(function(e){
+            $('#popup_suppression').modal('show');
+            return false;
+        });
+        $("#popup_suppr_do").click(function(e) {
+            var cible = $("#gestion_heures_supprimer"+' a').attr('href');
+            window.location.replace(cible);
+        });
+
+        //view all data in one page
+        $('#gestion_heures_voir_liste').click(function(e){
+            e.preventDefault();
+            viewAll();
+        })
+
+        //exporting to xls and set the filename
+        $('#export_xls').click(function(e){
+            e.preventDefault();
+            $(".export-file-excel").data("kendoWindow").open().center();
+        })
+
+        //exporting to pdf and set the filename
+        $('#export_pdf').click(function(e){
+            e.preventDefault();
+            $(".export-file-pdf").data("kendoWindow").open().center();
+        })
+    });
+
+    //this function will called after dataSource is finish loaded
+    function afterLoaded(){
+        //give text color if value Pas de Commande
+        $('td[role="gridcell"]:contains("Pas de Commande")').css('color', 'red');
+
+        //kendo Window for textarea type data
+        if($("div[class^=textarea-popup]").length){
+            $("div[class^=textarea-popup]").kendoWindow({
+                visible: false,
+                modal: true,
+                width: "75%",
+                height: "75%"
+            });
+        }
+
+        $('.copy-btn').click(function(){
+            textarea = $(this).parent().find('textarea');
+            textarea.select();
+            document.execCommand('copy');
+        })
+    }
+
+    //show Kendo Window textarea
+    function showTextarea(id){
+        $(".textarea-popup-"+id).data("kendoWindow").open().center();
+    }
+    function closeTextarea(id){
+        $(".textarea-popup-"+id).data("kendoWindow").close();
+    }
+
+    var view_all_toggle = 0;
+
+    function viewAll() {
+        if(view_all_toggle == 0){
+            $("#grid").data("kendoGrid").dataSource.pageSize(1000);
+            $('#gestion_heures_voir_liste span:nth-child(2)').html('<br>Vue par Page');
+            view_all_toggle = 1;
+        }
+        else{
+            $("#grid").data("kendoGrid").dataSource.pageSize(10);
+            $('#gestion_heures_voir_liste span:nth-child(2)').html('<br>Voir la Liste');
+            view_all_toggle = 0;
+        }
+    }
+
+    function saveAsExcel(filename){
+        var grid = $("#grid").data("kendoGrid");
+        grid.options.excel.fileName = filename;  //set filename
+        grid.saveAsExcel();
+        $(".export-file-excel").data("kendoWindow").close();
+    }
+
+    function saveAsPDF(filename){
+        //show all data in one page
+        if(view_all_toggle == 0)
+            viewAll()
+        var grid = $("#grid").data("kendoGrid");
+        grid.options.pdf.fileName = filename; //set filename
+        grid.saveAsPDF();
+        $(".export-file-pdf").data("kendoWindow").close();
+    }
+</script>
+
+<div class="export-file-excel" style="display: none">
+    <input  class="form-control input-sm"
+            style="width: 200px" name="filename" id="filename-excel" id="filename"
+            value="gestion_heures-2016-10-27.xlsx"><br>
+    <button class="btn btn-primary" onclick="saveAsExcel($('#filename-excel').val())" value="Export">Export</button>
+</div>
+<div class="export-file-pdf" style="display: none">
+    <input  class="form-control input-sm"
+            style="width: 200px" name="filename" id="filename-pdf" id="filename"
+            value="gestion_heures-2016-10-27.pdf"><br>
+    <button class="btn btn-primary" onclick="saveAsPDF($('#filename-pdf').val())" value="Export">Export</button>
+</div>

@@ -1,0 +1,411 @@
+#datatable_div {
+    padding: 0px;
+    border: 1px solid #e3e3e3;
+    overflow-x: hidden;
+    /*display: none;*/
+    margin-right: 20px !important;
+}
+#datatable_loading {
+    color: #C95B5C; 
+    font-size: 9pt;
+}
+
+table.dataTable { 
+    border-top: 1px solid #e3e3e3;
+    padding: 0px;
+    margin: 0px;
+    overflow:hidden;
+    overflow-x: hidden;
+}
+table.dataTable thead tr td { 
+    border-right: 1px solid #e3e3e3;
+    padding: 2px 0px 2px 0px;
+    overflow: hidden; /* this is what fixes the expansion */
+    text-overflow: ellipsis; /* not supported in all browsers, but I accepted the tradeoff */
+    white-space: nowrap; /* normal;*/
+}
+table.dataTable thead tr:first-child td { 
+    padding: 15px 0px 2px 0px;
+}
+.labels td { 
+    margin-top: 1px;
+    margin-bottom: 2px;
+    background-color: #f3f3f3;
+    border-right: 1px solid #e3e3e3;
+}
+table.dataTable thead{ 
+    border-top: 1px solid #e3e3e3;
+
+}
+table.dataTable tbody {
+    font-size: 8pt;
+    overflow:hidden;
+    BOX-SIZING: border-box;
+}
+table.dataTable thead tr td { 
+    overflow: hidden; /* this is what fixes the expansion */
+    text-overflow: ellipsis; /* not supported in all browsers, but I accepted the tradeoff */
+    white-space: nowrap;
+    min-width: 25px !important;
+}
+table.dataTable tbody tr td { 
+    /*padding: 2px 3px 2px 3px!important; */
+    padding: 2px 0px 2px 0px !important;
+    overflow: hidden; /* this is what fixes the expansion */
+    text-overflow: ellipsis; /* not supported in all browsers, but I accepted the tradeoff */
+    white-space: normal; /*nowrap;*/
+    height: 35px;
+    max-width: 150px !important;
+    min-width: 25px !important;
+}
+/*.JCLRgrip {
+    border: 1px solid rgb(127, 0, 0) !important;
+    border: 1px solid rgba(255, 0, 0, .5) !important;
+    -webkit-background-clip: padding-box  !important; 
+    background-clip: padding-box !important; 
+}*/
+.dataTables_wrapper {
+    overflow-x: hidden;
+}
+.dataTables_scrollBody::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.dataTables_scrollBody::-webkit-scrollbar
+{
+	width: 4px;
+	background-color: #F5F5F5;
+}
+
+.dataTables_scrollBody::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+	border: 1px solid #555555;
+}
+
+.dataTables_scrollBody{ 
+    overflow-x:hidden !important;
+    overflow-y:overlay !important;
+}
+.dataTables_scrollHeadInner {
+    padding-left:0px !important; 
+}
+.dataTables_scrollHeadInner table {
+    float: left !important;
+}
+                
+.movable {
+    cursor: move;
+    position:relative;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+.spacer25 {
+    float: left; 
+    width:25px;
+    background-color: #fff;
+    cursor:default;
+}
+
+.filter_label {
+    font-size: 9pt;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+.filter_div {
+    border-top: 0px solid black;
+    /*padding-top: 5px;*/
+    width: 100%;
+    cursor:default;
+}
+
+.filter_input_div {
+    margin-top: 5px;
+    padding-left:25px;
+    cursor:default;
+}
+
+.filter_select {
+    overflow: hidden;
+    margin-right: 0px;
+    padding-right: 0px;
+    display: inline-block;
+    cursor: pointer; 
+}
+
+.filter_clear {
+    float: left;
+    margin-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 2px;
+    display: none;
+    
+}
+
+.filter_global_clear {
+    font-size: 9pt; font-weight: bold;
+    height:20px;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 10px;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 2px;
+    cursor: pointer; cursor: hand;
+}
+
+.filter_clear_all {
+    font-size: 9pt;
+    height:20px;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid rgb(213, 113, 113);
+    border-radius: 2px;
+    cursor: pointer; cursor: hand;
+}
+
+.filter_input {
+    overflow: hidden;
+    width: auto;
+    height: 20px;
+    font-size: 8pt;
+    display: inline-block;
+    margin-left: 0px;
+    padding-left: 0px;
+    min-width: 40px;
+}
+
+.filter_global {
+    font-size: 9pt;
+    height:20px;
+    float: left;
+    width: 300px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.filter_type {
+    float: left;
+    width: auto;
+    border:0px solid #fff; 
+    margin-left: 25px;
+    display: none;
+}
+
+.filter_text {
+    display: none;
+    /*width: auto;
+    float: left;
+    margin-left: 10px;
+    border: 0px solid #fff; */
+}
+
+.filter_combo_div {
+    border: 0px solid green;
+    vertical-align: middle;
+    padding-top: 2px;
+}
+input.resizable {
+    min-width: 40px;
+    width: 40px;
+}
+
+/* jquery.periodpicker */
+.icon_calendar {
+    display: none !important;
+}
+div[type="button"] {
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+}
+.period_picker_input {
+    padding: 0px !important;
+    height:20px !important;
+    line-height:20px !important;
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    min-width: 85px !important; max-width: 85px !important;
+}
+.period_button_text {
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+}
+.period_button_content_body {
+    font-size: 8pt !important;
+
+}
+/* EOF: jquery.periodpicker */
+
+tr.selected {
+    background-color: #acc1d8;
+}
+
+table.dataTable tr.highlighted,
+table.dataTable tbody tr.odd.highlighted,
+table.dataTable tbody tr.even.highlighted,
+table.dataTable.stripe tbody tr.odd.highlighted,
+table.dataTable.stripe tbody tr.even.highlighted {
+    background-color: #fff2c7;
+}
+
+#filter_options_div {
+    display: none;
+    width: 250px; overflow-x: hidden;
+    z-index: 10;
+    border: 1px solid rgb(113, 113, 113);
+    position: absolute;
+    top: 100;
+    left: 0;
+    background-color: #ffffff;
+    text-align: left;
+    padding: 5px;
+}
+#filter_options_div ul{
+    padding: 2px;
+    margin: 0px;
+}
+#filter_options_div li{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#filter_options_div li:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+#select_mask_options_div {
+    display: none;
+    width: 250px; overflow-x: hidden;
+    z-index: 10;
+    border: 1px solid rgb(113, 113, 113);
+    position: absolute;
+    top: 100;
+    left: 0;
+    background-color: #ffffff;
+    text-align: left;
+    padding: 5px;
+}
+#select_mask_options_div ul{
+    padding: 2px;
+    margin: 0px;
+}
+#select_mask_options_div li{
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 8pt;
+}
+#select_mask_options_div li:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+.sorter {
+    float: right; 
+    margin-right: 2px; margin-top: -15px;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 7pt;
+    cursor: default;
+    position: absolute;right: 0;top:0;
+    background-color: #ffffff;
+    opacity: 0.75;
+}
+
+.masse_actions {
+    font-size: 9pt;
+    height:25px;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 20px;
+    vertical-align: center;
+}
+.masse_actions_select {
+    width: 75px;
+}
+#masse_actions_cb {
+    text-align: center;
+    margin-left:10px; 
+    margin-right:10px;
+}
+
+.dt_select {
+    width: 75px;
+}
+
+.dataTables_scrollHeadInner{
+    /*width: 100% !important;*/
+    float:left;
+    background-color: rgb(240, 240, 240);
+}
+.dataTables_scrollHeadInner table{
+    /*width: 100% !important;*/
+    float:left;
+}
+
+.updating_txt {
+    font-size: 7pt;
+    color: orange;
+    overflow: hidden;
+}
+
+.surbrillance-0 {
+}
+.surbrillance-1 {
+    background-color: orange !important;
+}
+.surbrillance-2 {
+    background-color: lightgreen !important;
+}
+.surbrillance-3 {
+    background-color: indianred !important;
+}
+.non-valide {
+    font-weight: normal !important;
+}
+.valide {
+    font-weight: bold !important;
+}
+
+.note_action {
+}
+
+#datatable_filter {
+    display: none !important;
+}
+
+div.deleteicon {
+    display: inline-block;
+    position: relative;
+}
+div.deleteicon span {
+    position: absolute;
+    display: block;
+    top: 03px;
+    right: 01px;
+    width: 14px;
+    height: 14px;
+    background: url('../images/clear_filter.png') no-repeat;
+    cursor: pointer;
+}
+div.deleteicon span.is_hidden {
+    position: absolute;
+    display: block;
+    top: 03px;
+    right: 01px;
+    width: 14px;
+    height: 14px;
+    background: url('../images/clear_filter_hidden.png') no-repeat;
+    cursor: pointer;
+}
+
+
+div.deleteicon input {
+    padding-right: 14px;
+}

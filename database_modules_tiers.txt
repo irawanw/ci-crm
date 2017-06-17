@@ -1,0 +1,934 @@
+--
+-- Table structure for table `t_vehicules`
+--
+
+CREATE TABLE IF NOT EXISTS `t_vehicules` (
+  `vehicules_id` int(11) NOT NULL AUTO_INCREMENT,
+  `marque` varchar(50) NOT NULL,
+  `modele` varchar(50) NOT NULL,
+  `annee` varchar(50) NOT NULL,
+  `immatriculation` varchar(50) NOT NULL,
+  `assureur` varchar(75) NOT NULL,
+  `numero_police` varchar(75) NOT NULL,
+  `propietaire` varchar(75) NOT NULL,
+  `utilisateur` int(11) NOT NULL,
+  `dernier_controle_date` date NOT NULL,
+  `prochain_controle_date` date NOT NULL,
+  `list_reparation` text NOT NULL,
+  `inactive` datetime NOT NULL,
+  `deleted` datetime NOT NULL,
+  PRIMARY KEY (`vehicules_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_livraisons`
+--
+
+CREATE TABLE IF NOT EXISTS `t_livraisons` (
+  `livraisons_id` int(11) NOT NULL AUTO_INCREMENT,
+  `client` int(11) NOT NULL,
+  `commande` int(11) NOT NULL,
+  `date_livraisons` datetime NOT NULL,
+  `palettes` int(11) NOT NULL,
+  `cartons` int(11) NOT NULL,
+  `remarques` varchar(50) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `inactive` datetime NOT NULL,
+  `deleted` datetime NOT NULL,
+  PRIMARY KEY (`livraisons_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+--
+-- Table structure for table `t_factures_compta`
+--
+
+CREATE TABLE IF NOT EXISTS `t_factures_compta` (
+  `factures_compta_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_fournisseur` varchar(100) NOT NULL,
+  `intitule_sur_compte` varchar(100) NOT NULL,
+  `montant_debit` int(11) NOT NULL,
+  `date_debit` date NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `lien_vers_la_facture` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`factures_compta_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_amalgame`
+--
+
+CREATE TABLE IF NOT EXISTS `t_amalgame` (
+  `amalgame_id` int(11) NOT NULL AUTO_INCREMENT,
+  `amalgame_group_id` int(11) DEFAULT NULL,
+  `client` int(11) DEFAULT NULL,
+  `commande` int(11) DEFAULT NULL,
+  `denomination_taille` varchar(50) DEFAULT NULL,
+  `type_document` varchar(50) DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `plis` int(3) DEFAULT NULL,
+  `type_plis` varchar(50) DEFAULT NULL,
+  `eq_t50_a5` float(11,2) DEFAULT NULL,
+  `bat` tinyint(4) DEFAULT NULL,
+  `largeur` decimal(5,2) DEFAULT NULL,
+  `longueur` decimal(5,2) DEFAULT NULL,
+  `denomination_taille_ferme` varchar(50) DEFAULT NULL,
+  `largeur_ferme` decimal(5,2) DEFAULT NULL,
+  `longueur_ferme` decimal(5,2) DEFAULT NULL,
+  `fischiers_imprimer` varchar(75) DEFAULT NULL,
+  `lien_fichier` varchar(150) DEFAULT NULL,
+  `valider` varchar(100) DEFAULT NULL,
+  `inactive` datetime NOT NULL,
+  `deleted` datetime NOT NULL,
+  PRIMARY KEY (`amalgame_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_manual_sending`
+--
+
+CREATE TABLE IF NOT EXISTS `t_manual_sending` (
+  `manual_sending_id` int(11) NOT NULL AUTO_INCREMENT,
+  `software` varchar(55) NOT NULL,
+  `operateur_qui_envoie` int(11) NOT NULL,
+  `date_envoi` date NOT NULL,
+  `date_limite_de_fin` date NOT NULL,
+  `client` int(11) NOT NULL,
+  `commande` int(11) NOT NULL,
+  `message` int(11) NOT NULL,
+  `segment_numero` int(11) NOT NULL,
+  `segment_part` int(11) NOT NULL,
+  `verification_number` varchar(30) NOT NULL,
+  `quantite_envoyer` int(11) NOT NULL,
+  `quantite_envoyee` int(11) NOT NULL,
+  `number_sent` int(11) NOT NULL,
+  `openemm` int(11) NOT NULL,
+  `deliv_sur_test_orange` varchar(55) NOT NULL,
+  `deliv_sur_test_free` varchar(55) NOT NULL,
+  `deliv_sur_test_sfr` varchar(55) NOT NULL,
+  `deliv_sur_test_gmail` varchar(55) NOT NULL,
+  `deliv_sur_test_microsoft` varchar(55) NOT NULL,
+  `deliv_sur_test_yahoo` varchar(55) NOT NULL,
+  `deliv_sur_test_ovh` varchar(55) NOT NULL,
+  `deliv_sur_test_oneandone` varchar(55) NOT NULL,
+  `manual_sender` int(11) NOT NULL,
+  `speed_hours` decimal(7,5) NOT NULL,
+  `number_hours` int(11) NOT NULL,
+  `inactive` datetime NOT NULL,
+  `deleted` datetime NOT NULL,
+  PRIMARY KEY (`manual_sending_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_pages_jaunes`
+--
+
+CREATE TABLE IF NOT EXISTS `t_pages_jaunes` (
+  `pages_jaunes_id` int(11) NOT NULL AUTO_INCREMENT,
+  `software` varchar(25) NOT NULL,
+  `operateur_qui_envoie` int(11) NOT NULL,
+  `date_envoi` date NOT NULL,
+  `date_limite_de_fin` date NOT NULL,
+  `client` int(11) NOT NULL,
+  `commande` int(11) NOT NULL,
+  `message` int(11) NOT NULL,
+  `openemm` int(11) NOT NULL,
+  `verification_number` varchar(5) NOT NULL,
+  `number_sent` int(11) NOT NULL,
+  `quantite_envoyer` int(11) NOT NULL,
+  `quantite_envoyee` int(11) NOT NULL,
+  `copy_mail` int(11) NOT NULL,
+  `number_sent_through` int(11) NOT NULL,
+  `number_sent_mail` int(11) NOT NULL,
+  `inactive` datetime NOT NULL,
+  `deleted` datetime NOT NULL,
+  PRIMARY KEY (`pages_jaunes_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_telephones`
+--
+
+CREATE TABLE IF NOT EXISTS `t_telephones` (
+  `telephones_id` int(11) NOT NULL AUTO_INCREMENT,
+  `souscription_date` date NOT NULL,
+  `numero_client` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `numero_internet` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `numero_tel` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `engagement_jusquau` date NOT NULL,
+  `resiliation_date` date NOT NULL,
+  `etat` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `type` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `fornisseur` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `prix` decimal(4,2) NOT NULL,
+  `societe` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `lieu_ligne` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `utilisation_actuelle` varchar(150) CHARACTER SET utf8 NOT NULL,
+  `utilisation_future` varchar(150) CHARACTER SET utf8 NOT NULL,
+  `problemes_resoudre` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `user` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `url` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `mdp` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `inactive` datetime NOT NULL,
+  `deleted` datetime NOT NULL,
+  PRIMARY KEY (`telephones_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+
+--
+-- Table structure for table `t_files`
+--
+
+DROP TABLE IF EXISTS `t_files`;
+CREATE TABLE IF NOT EXISTS `t_files` (
+  `file_id` int(11) NOT NULL AUTO_INCREMENT,
+  `row_id` int(11) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  PRIMARY KEY (`file_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+
+--
+-- Table structure for table `t_controle_recurrents`
+--
+
+CREATE TABLE IF NOT EXISTS `t_controle_recurrents` (
+  `controle_recurrents_id` int(11) NOT NULL AUTO_INCREMENT,
+  `controle_recurrents_group_id` int(11) NOT NULL,
+  `ville` varchar(55) NOT NULL,
+  `addresse_exacte` text NOT NULL,
+  `rue` varchar(200) NOT NULL,
+  `numero` varchar(50) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `telephone` varchar(55) NOT NULL,
+  `mail` varchar(55) NOT NULL,
+  `date_controle` date NOT NULL,
+  `type` varchar(55) NOT NULL,
+  `resultat` varchar(55) NOT NULL,
+  `observations` text NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`controle_recurrents_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_controle_recurrents_group`
+--
+
+CREATE TABLE IF NOT EXISTS `t_controle_recurrents_group` (
+  `group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(100) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `client` int(11) NOT NULL,
+  `commande` int(11) NOT NULL,
+  `date` date DEFAULT NULL,
+  `controle_permanent_id` int(11) DEFAULT NULL,
+  `date_controle_ponctuel` date DEFAULT NULL,
+  `type_ponctuel` varchar(100) NOT NULL,
+  `valid` int(11) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`group_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `t_controle_recurrents_group`
+--
+
+INSERT INTO `t_controle_recurrents_group` (`group_id`, `type`, `name`, `client`, `commande`, `date`, `controle_permanent_id`, `date_controle_ponctuel`, `type_ponctuel`, `valid`, `inactive`, `deleted`) VALUES
+(1, 'permanent', '20-EME-APPART_CM00001_28-November-2016', 54, 1, '2016-11-28', NULL, NULL, '', 1, NULL, NULL),
+(3, 'permanent', '20-EME-APPART_CM00003_29-November-2016', 54, 3, '2016-11-29', NULL, NULL, '', 0, NULL, '2016-12-02 07:34:34'),
+(5, 'ponctuel', '20-EME-APPART_CM00001_29-November-2016', 54, 0, '0000-00-00', 1, '2016-11-29', 'terrain', 1, NULL, NULL),
+(6, 'permanent', '20-EME-APPART_Pas-de-Commande_29-November-2016', 54, -1, '2016-11-29', NULL, NULL, '', 0, NULL, NULL),
+(7, 'permanent', '20-EME-APPART_CM00001_14-December-2016', 54, 1, '2016-12-14', NULL, NULL, '', 0, NULL, NULL),
+(8, 'ponctuel', '20-EME-APPART_CM00001_14-December-2016', 54, 0, '0000-00-00', 7, '2016-12-16', 'appel', 0, NULL, NULL),
+(9, 'ponctuel', '20-EME-APPART_Pas-de-Commande_14-December-2016', 54, 0, '0000-00-00', 0, '2016-12-07', 'appel', 0, NULL, NULL),
+(10, 'permanent', '321_Pas-de-Commande_14-December-2016', 170, -1, '2016-12-14', NULL, NULL, '', 0, NULL, NULL),
+(11, 'ponctuel', '321_Pas-de-Commande_14-December-2016', 170, 0, '0000-00-00', 0, '2016-12-18', 'appel', 0, NULL, NULL),
+(12, 'permanent', 'AGENCE-AIP_Pas-de-Commande_21-December-2016', 117, -1, '2016-12-21', NULL, NULL, '', 1, NULL, NULL),
+(13, 'ponctuel', 'AGENCE-AIP_Pas-de-Commande_21-December-2016', 117, 0, '0000-00-00', 12, '2016-12-23', 'appel', 0, NULL, NULL);
+
+--
+-- Stand-in structure for view `factures_view`
+--
+CREATE TABLE IF NOT EXISTS `factures_view` (
+`facture_id` int(9) unsigned
+,`total_ht` decimal(41,3)
+,`remise` decimal(29,3)
+,`facture_name` varchar(30)
+,`fac_commande` int(9) unsigned
+);
+
+--
+-- Stand-in structure for view `global_view`
+--
+CREATE TABLE IF NOT EXISTS `global_view` (
+`software` varchar(14)
+,`id` int(11)
+,`operateur_qui_envoie` varchar(50)
+,`date_envoi` date
+,`date_limite_de_fin` date
+,`stats` varchar(55)
+,`client` varchar(100)
+,`cmd_id` int(11) unsigned
+,`commande` varchar(10)
+,`message_id` int(11)
+,`message_name` varchar(100)
+,`message_view` text
+,`message_lien` varchar(100)
+,`message_object` varchar(100)
+,`message_type` varchar(25)
+,`message_famille` varchar(30)
+,`message_societe` varchar(100)
+,`message_commercial` varchar(50)
+,`message_email` varchar(55)
+,`message_telephone` varchar(55)
+,`openemm` varbinary(11)
+,`verification_number` varchar(55)
+,`deliv_sur_test_orange` varchar(55)
+,`deliv_sur_test_free` varchar(55)
+,`deliv_sur_test_sfr` varchar(55)
+,`deliv_sur_test_gmail` varchar(55)
+,`deliv_sur_test_microsoft` varchar(55)
+,`deliv_sur_test_yahoo` varchar(55)
+,`deliv_sur_test_ovh` varchar(55)
+,`deliv_sur_test_oneandone` varchar(55)
+,`manual_sender` varchar(100)
+,`manual_sender_domain` varchar(100)
+,`copy_mail` varchar(100)
+,`number_sent_through` varbinary(11)
+,`number_sent_mail` varbinary(11)
+,`physical_server` varchar(55)
+,`smtp` varchar(55)
+,`rotation` varchar(5)
+,`computer` varchar(55)
+,`segment_part` varbinary(11)
+,`speed_hours` varbinary(9)
+,`number_hours` varbinary(11)
+,`quantite_envoyer` int(11)
+,`openemm_current` bigint(20)
+,`openemm_number_of_open` varbinary(11)
+,`openemm_open_rate` varbinary(9)
+,`openemm_number_of_click` varbinary(11)
+,`openemm_click_rate` varbinary(9)
+,`deliv_reelle_bounce` varbinary(11)
+,`deliv_reelle_bounce_percentage` varbinary(9)
+,`deliv_reelle_hard_bounce_rate` varbinary(9)
+,`deliv_reelle_soft_bounce_rate` varbinary(9)
+,`openemm_open_rate_pct` varbinary(11)
+,`openemm_click_rate_pct` varbinary(11)
+,`deliv_reelle_bounce_percentage_pct` varbinary(11)
+,`deliv_reelle_hard_bounce_rate_pct` varbinary(11)
+,`deliv_reelle_soft_bounce_rate_pct` varbinary(11)
+,`facture` varchar(30)
+,`inactive` datetime
+,`deleted` datetime
+,`facture_id` int(11) unsigned
+,`ht` decimal(65,6)
+,`provider` char(0)
+,`ip` char(0)
+,`domain` char(0)
+,`segment_numero` char(0)
+,`segment_nom` char(0)
+,`segment_first_critere` char(0)
+,`segment_second_critere` char(0)
+,`segment_many_criterias` char(0)
+,`number_sent` char(0)
+,`quantite_envoyee` char(0)
+,`deliv_reelle_orange` char(0)
+,`deliv_reelle_free` char(0)
+,`deliv_reelle_sfr` char(0)
+,`deliv_reelle_gmail` char(0)
+,`deliv_reelle_microsoft` char(0)
+,`deliv_reelle_yahoo` char(0)
+,`deliv_reelle_ovh` char(0)
+,`deliv_reelle_oneandone` char(0)
+);
+
+--
+-- Table structure for table `oc_ownnotes_notes`
+--
+
+CREATE TABLE IF NOT EXISTS `oc_ownnotes_notes` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `object_id` bigint(20) NOT NULL DEFAULT '0',
+  `user_id` varchar(200) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `format_file` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `size_file` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `date_creation` date DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `client_name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `devis` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `facture` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `client_id` bigint(20) DEFAULT '0',
+  `devis_id` bigint(20) DEFAULT '0',
+  `facture_id` bigint(20) DEFAULT '0',
+  `description` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Table structure for table `t_amalgame_group`
+--
+
+CREATE TABLE IF NOT EXISTS `t_amalgame_group` (
+  `amalgame_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `date_de_livraison_del_amalgame` date DEFAULT NULL,
+  `date_envoi_bat_global` date DEFAULT NULL,
+  `date_livraison_reelle` date DEFAULT NULL,
+  `valid` int(1) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`amalgame_group_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_controle_permanent`
+--
+
+CREATE TABLE IF NOT EXISTS `t_controle_permanent` (
+  `controle_permanent_id` int(11) NOT NULL AUTO_INCREMENT,
+  `controle_name` varchar(150) NOT NULL,
+  `client` int(11) NOT NULL,
+  `commandes` int(11) NOT NULL,
+  `valid` int(11) NOT NULL,
+  PRIMARY KEY (`controle_permanent_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_controle_ponctuels`
+--
+
+CREATE TABLE IF NOT EXISTS `t_controle_ponctuels` (
+  `controle_permanent_id` int(11) NOT NULL AUTO_INCREMENT,
+  `controle_name` varchar(150) NOT NULL,
+  `client` int(11) NOT NULL,
+  `commandes` int(11) NOT NULL,
+  `valid` int(11) NOT NULL,
+  PRIMARY KEY (`controle_permanent_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+--
+-- Table structure for table `t_domains`
+--
+
+CREATE TABLE IF NOT EXISTS `t_domains` (
+  `domain_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(100) NOT NULL,
+  `owner` int(11) NOT NULL,
+  `host` int(11) NOT NULL,
+  `compte` varchar(100) NOT NULL,
+  `contrat` varchar(100) NOT NULL,
+  `identifiant` varchar(100) NOT NULL,
+  `site` varchar(100) NOT NULL,
+  `utilisation` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`domain_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_emm_followup`
+--
+
+CREATE TABLE IF NOT EXISTS `t_emm_followup` (
+  `emm_followup_id` int(11) NOT NULL AUTO_INCREMENT,
+  `client` int(11) NOT NULL,
+  `commande` int(11) NOT NULL,
+  `message` varchar(75) DEFAULT NULL,
+  `quantite_totale_a_envoyer` int(11) NOT NULL,
+  `quantite_envoyee` int(11) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `logiciel_utilise` varchar(50) NOT NULL,
+  `open_rate` decimal(7,5) NOT NULL,
+  `bounce_rate` decimal(7,5) NOT NULL,
+  `hard_bounce_rate` decimal(7,5) NOT NULL,
+  `soft_bounce_rate` decimal(7,5) NOT NULL,
+  `click_rate` decimal(7,5) NOT NULL,
+  `number_of_clicks` int(11) NOT NULL,
+  `number_of_opens` int(11) NOT NULL,
+  `deliverance` varchar(75) NOT NULL,
+  `percentage_delivery` decimal(7,5) NOT NULL,
+  `percentage_spam` decimal(7,5) NOT NULL,
+  `percentage_not_delivered` decimal(7,5) NOT NULL,
+  `ip_blacklist` decimal(7,5) NOT NULL,
+  `message_blacklist` decimal(7,5) NOT NULL,
+  `domain_blacklist` decimal(7,5) NOT NULL,
+  `sender_blacklist` decimal(7,5) NOT NULL,
+  `server` varchar(100) NOT NULL,
+  `smtp` varchar(100) NOT NULL,
+  `rotation` varchar(10) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`emm_followup_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `t_feuille_controle`
+--
+
+CREATE TABLE IF NOT EXISTS `t_feuille_controle` (
+  `feuille_controle_id` int(11) NOT NULL AUTO_INCREMENT,
+  `feuille_controle_group_id` int(11) NOT NULL,
+  `heure_debut` datetime NOT NULL,
+  `heure_fin` datetime NOT NULL,
+  `numero` int(11) NOT NULL,
+  `rue` varchar(100) NOT NULL,
+  `ville` varchar(100) NOT NULL,
+  `resultat` varchar(100) NOT NULL,
+  `commentaire` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`feuille_controle_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_feuille_controle_group`
+--
+
+CREATE TABLE IF NOT EXISTS `t_feuille_controle_group` (
+  `feuille_controle_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_du_controle` date DEFAULT NULL,
+  `heure_de_debut` time DEFAULT NULL,
+  `heure_de_fin` time DEFAULT NULL,
+  `controleur` int(11) NOT NULL,
+  `client` int(11) NOT NULL,
+  `devis` int(11) NOT NULL,
+  `facture` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `valid` tinyint(1) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`feuille_controle_group_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_gestion_group`
+--
+
+CREATE TABLE IF NOT EXISTS `t_gestion_group` (
+  `gestion_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `employes` int(11) NOT NULL,
+  `annee` int(6) NOT NULL,
+  `mois` int(2) NOT NULL,
+  `urbain_div` int(11) NOT NULL,
+  `rural_div` int(11) NOT NULL,
+  `nombre_de_heures` int(11) NOT NULL,
+  `valid` tinyint(1) NOT NULL DEFAULT '0',
+  `controle` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`gestion_group_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_gestion_heures`
+--
+
+CREATE TABLE IF NOT EXISTS `t_gestion_heures` (
+  `gestion_heures_id` int(11) NOT NULL AUTO_INCREMENT,
+  `gestion_heures_group` int(11) NOT NULL,
+  `ville` varchar(255) NOT NULL,
+  `urbain` int(11) NOT NULL,
+  `rural` int(11) NOT NULL,
+  `controle_autres` int(11) NOT NULL,
+  `kilometres` int(11) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`gestion_heures_id`),
+  KEY `gestion_heures_group` (`gestion_heures_group`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_hosts`
+--
+
+CREATE TABLE IF NOT EXISTS `t_hosts` (
+  `host_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(100) NOT NULL,
+  `pays` varchar(100) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `lien` varchar(100) NOT NULL,
+  `tel_support_technique` varchar(100) NOT NULL,
+  `mail_support_technique` varchar(100) NOT NULL,
+  `tel_service_commercial` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`host_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_ips`
+--
+
+CREATE TABLE IF NOT EXISTS `t_ips` (
+  `ip_id` int(11) NOT NULL AUTO_INCREMENT,
+  `numero` varchar(100) NOT NULL,
+  `serveur` varchar(100) NOT NULL,
+  `host` int(11) NOT NULL,
+  `etat` varchar(100) NOT NULL,
+  `utilisation` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`ip_id`),
+  KEY `host` (`host`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_max_bulk`
+--
+
+CREATE TABLE IF NOT EXISTS `t_max_bulk` (
+  `max_bulk_id` int(11) NOT NULL AUTO_INCREMENT,
+  `software` varchar(55) NOT NULL,
+  `operateur_qui_envoie` int(11) NOT NULL,
+  `date_envoi` date NOT NULL,
+  `date_limite_de_fin` date NOT NULL,
+  `stats` varchar(55) NOT NULL,
+  `message` int(11) NOT NULL,
+  `client` int(11) NOT NULL,
+  `commande` int(11) NOT NULL,
+  `segment_part` int(11) NOT NULL,
+  `verification_number` varchar(55) NOT NULL,
+  `number_sent` int(11) NOT NULL,
+  `quantite_envoyer` int(11) NOT NULL,
+  `quantite_envoyee` int(11) NOT NULL,
+  `openemm` int(11) NOT NULL,
+  `deliv_sur_test_orange` varchar(55) NOT NULL,
+  `deliv_sur_test_free` varchar(55) NOT NULL,
+  `deliv_sur_test_sfr` varchar(55) NOT NULL,
+  `deliv_sur_test_gmail` varchar(55) NOT NULL,
+  `deliv_sur_test_microsoft` varchar(55) NOT NULL,
+  `deliv_sur_test_yahoo` varchar(55) NOT NULL,
+  `deliv_sur_test_ovh` varchar(55) NOT NULL,
+  `deliv_sur_test_oneandone` varchar(55) NOT NULL,
+  `physical_server` varchar(55) NOT NULL,
+  `smtp` varchar(55) NOT NULL,
+  `computer` varchar(55) NOT NULL,
+  `inactive` datetime NOT NULL,
+  `deleted` datetime NOT NULL,
+  PRIMARY KEY (`max_bulk_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_message_list`
+--
+
+CREATE TABLE IF NOT EXISTS `t_message_list` (
+  `message_list_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `famille_darticles` varchar(100) NOT NULL,
+  `societe` varchar(100) NOT NULL,
+  `salesman` varchar(100) NOT NULL,
+  `telephone` varchar(55) NOT NULL,
+  `email` varchar(55) NOT NULL,
+  `segment_name` varchar(100) NOT NULL,
+  `segment_number` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `object` varchar(100) NOT NULL,
+  `lien_pour_telecharger` varchar(100) NOT NULL,
+  `department` varchar(100) NOT NULL,
+  `region` varchar(100) NOT NULL,
+  `country` varchar(100) NOT NULL,
+  `activities` varchar(100) NOT NULL,
+  `origin` varchar(50) NOT NULL,
+  `type` varchar(25) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`message_list_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_objectif`
+--
+
+CREATE TABLE IF NOT EXISTS `t_objectif` (
+  `objectifs_id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) NOT NULL,
+  `nature` int(11) NOT NULL,
+  `date_limite` date NOT NULL,
+  `resultat_date_limite` date NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`objectifs_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_openemm`
+--
+
+CREATE TABLE IF NOT EXISTS `t_openemm` (
+  `openemm_id` int(11) NOT NULL AUTO_INCREMENT,
+  `software` varchar(55) NOT NULL,
+  `operateur_qui_envoie` int(11) NOT NULL,
+  `date_envoi` date NOT NULL,
+  `date_limite_de_fin` date NOT NULL,
+  `stats` varchar(55) NOT NULL,
+  `message` int(11) NOT NULL,
+  `client` int(11) NOT NULL,
+  `commande` int(11) NOT NULL,
+  `segment_part` int(11) NOT NULL,
+  `openemm` int(11) NOT NULL,
+  `deliv_sur_test_orange` varchar(55) NOT NULL,
+  `deliv_sur_test_free` varchar(55) NOT NULL,
+  `deliv_sur_test_sfr` varchar(55) NOT NULL,
+  `deliv_sur_test_gmail` varchar(55) NOT NULL,
+  `deliv_sur_test_microsoft` varchar(55) NOT NULL,
+  `deliv_sur_test_yahoo` varchar(55) NOT NULL,
+  `deliv_sur_test_ovh` varchar(55) NOT NULL,
+  `deliv_sur_test_oneandone` varchar(55) NOT NULL,
+  `physical_server` varchar(55) NOT NULL,
+  `smtp` varchar(55) NOT NULL,
+  `rotation` varchar(5) NOT NULL,
+  `inactive` datetime NOT NULL,
+  `deleted` datetime NOT NULL,
+  PRIMARY KEY (`openemm_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_openemm_stats`
+--
+
+CREATE TABLE IF NOT EXISTS `t_openemm_stats` (
+  `openemm_id` int(11) NOT NULL,
+  `total` int(11) DEFAULT NULL,
+  `current` int(11) DEFAULT NULL,
+  `number_of_open` int(11) DEFAULT NULL,
+  `open_rate` decimal(7,5) DEFAULT NULL,
+  `number_of_click` int(11) DEFAULT NULL,
+  `click_rate` decimal(7,5) DEFAULT NULL,
+  `bounce` int(11) DEFAULT NULL,
+  `bounce_rate` decimal(7,5) DEFAULT NULL,
+  `hard_bounce_rate` decimal(7,5) DEFAULT NULL,
+  `soft_bounce_rate` decimal(7,5) DEFAULT NULL,
+  PRIMARY KEY (`openemm_id`),
+  UNIQUE KEY `openemm_id` (`openemm_id`),
+  KEY `openemm_id_2` (`openemm_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_owners`
+--
+
+CREATE TABLE IF NOT EXISTS `t_owners` (
+  `owner_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telephone` varchar(100) NOT NULL,
+  `adresse` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `quatre_premiers_chiffres` varchar(50) NOT NULL,
+  `les_quatre_derniers_chiffres` varchar(50) NOT NULL,
+  `banque` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`owner_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_production_mails`
+--
+
+CREATE TABLE IF NOT EXISTS `t_production_mails` (
+  `production_mails_id` int(11) NOT NULL AUTO_INCREMENT,
+  `mail` varchar(100) NOT NULL,
+  `domain` varchar(100) NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `pass` varchar(100) NOT NULL,
+  `login_url` varchar(100) NOT NULL,
+  `provider` int(11) NOT NULL,
+  `abuse_email` varchar(255) DEFAULT NULL,
+  `abuse_telephone` varchar(255) DEFAULT NULL,
+  `abuse_url` varchar(255) DEFAULT NULL,
+  `commentaries` text NOT NULL,
+  `used_for` varchar(50) NOT NULL,
+  `status` varchar(55) NOT NULL,
+  `blacklist` varchar(50) DEFAULT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`production_mails_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_providers`
+--
+
+CREATE TABLE IF NOT EXISTS `t_providers` (
+  `providers_id` int(11) NOT NULL AUTO_INCREMENT,
+  `provider` varchar(100) NOT NULL,
+  `abuse_email` varchar(255) NOT NULL,
+  `abuse_telephone` varchar(255) NOT NULL,
+  `abuse_url` varchar(255) NOT NULL,
+  `commentaries` text NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`providers_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_purchases`
+--
+
+CREATE TABLE IF NOT EXISTS `t_purchases` (
+  `purchase_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `description` varchar(200) NOT NULL,
+  `delivery` varchar(100) NOT NULL,
+  `date_limit` date NOT NULL,
+  `sponsor` varchar(100) NOT NULL,
+  `person` varchar(100) NOT NULL,
+  `beneficiary` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime NOT NULL,
+  PRIMARY KEY (`purchase_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `t_servers`
+--
+
+CREATE TABLE IF NOT EXISTS `t_servers` (
+  `server_id` int(11) NOT NULL AUTO_INCREMENT,
+  `owner_new_domain` int(11) NOT NULL,
+  `account_registrar` varchar(100) NOT NULL,
+  `eta_du_serveur` varchar(100) NOT NULL,
+  `host` int(11) NOT NULL,
+  `nom_interne` varchar(100) NOT NULL,
+  `numero_de_client` varchar(100) NOT NULL,
+  `owner` int(11) NOT NULL,
+  `contrat` varchar(100) NOT NULL,
+  `options` varchar(100) NOT NULL,
+  `system_exploration` varchar(100) NOT NULL,
+  `type_serveur` varchar(100) NOT NULL,
+  `utilisation` varchar(100) NOT NULL,
+  `remarques` varchar(100) NOT NULL,
+  `interface_gestion_serveur` varchar(100) NOT NULL,
+  `liste_serveurs_virtuels` varchar(100) NOT NULL,
+  `acces_contrat` varchar(100) NOT NULL,
+  `acces_root` varchar(100) NOT NULL,
+  `acces_plesk` varchar(100) NOT NULL,
+  `acces_compte_client_url` varchar(100) NOT NULL,
+  `acces_compte_client_login` varchar(100) NOT NULL,
+  `acces_compte_client_pass` varchar(100) NOT NULL,
+  `acces_compte_client_utilisateurs` int(11) NOT NULL,
+  `acces_contrat_url` varchar(100) NOT NULL,
+  `acces_contrat_login` varchar(100) NOT NULL,
+  `acces_contrat_pass` varchar(100) NOT NULL,
+  `acces_contrat_utilisateurs` int(11) NOT NULL,
+  `acces_root_url` varchar(100) NOT NULL,
+  `acces_root_login` varchar(100) NOT NULL,
+  `acces_root_pass` varchar(100) NOT NULL,
+  `acces_root_utilisateurs` int(11) NOT NULL,
+  `acces_plesk_url` varchar(100) NOT NULL,
+  `acces_plesk_login` varchar(100) NOT NULL,
+  `acces_plesk_pass` varchar(100) NOT NULL,
+  `acces_plesk_utilisateurs` int(11) NOT NULL,
+  `url_lien_premier` varchar(100) NOT NULL,
+  `titre_lien_premier` varchar(100) NOT NULL,
+  `url_lien_deuxieme` varchar(100) NOT NULL,
+  `titre_lien_deuxieme` varchar(100) NOT NULL,
+  `virtualisation` varchar(100) NOT NULL,
+  `prix` decimal(15,2) NOT NULL,
+  `type_de_paiement` varchar(100) NOT NULL,
+  `echeance_du_paiement` date NOT NULL,
+  `date_de_resiliation` date NOT NULL,
+  `moyen_de_paiement` varchar(100) NOT NULL,
+  `payer_avec` varchar(100) NOT NULL,
+  `ips` int(11) NOT NULL,
+  `domaines` int(11) NOT NULL,
+  `virtualisation_server` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`server_id`),
+  KEY `host` (`host`),
+  KEY `owner` (`owner`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_suivi_adwords`
+--
+
+CREATE TABLE IF NOT EXISTS `t_suivi_adwords` (
+  `suivi_adword_id` int(11) NOT NULL AUTO_INCREMENT,
+  `mots_clefs` varchar(100) NOT NULL,
+  `distribution_prospectus` varchar(100) NOT NULL,
+  `distribution_de_prospectus` varchar(100) NOT NULL,
+  `distribution_de_flyer` varchar(100) NOT NULL,
+  `distribution_de_prospectus_en_boites_aux_lettres` varchar(100) NOT NULL,
+  `distribution_de_publicite` varchar(100) NOT NULL,
+  `societe_de_distribution_de_prospectus` varchar(100) NOT NULL,
+  `tarif_distribution_de_prospectus` varchar(100) NOT NULL,
+  `distribution_prospectus_paris` varchar(100) NOT NULL,
+  `distribution_de_prospectus_paris` varchar(100) NOT NULL,
+  `distribution_de_flyer_paris` varchar(100) NOT NULL,
+  `distribution_de_publicite_paris` varchar(100) NOT NULL,
+  `mot` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`suivi_adword_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `t_taches`
+--
+
+CREATE TABLE IF NOT EXISTS `t_taches` (
+  `tac_id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `tac_emetteur` int(9) unsigned NOT NULL,
+  `tac_titre` varchar(50) NOT NULL DEFAULT '',
+  `tac_description` varchar(400) NOT NULL DEFAULT '',
+  `tac_info` varchar(512) NOT NULL DEFAULT '',
+  `tac_debut_prevu` datetime NOT NULL,
+  `tac_fin_prevue` date NOT NULL,
+  `tac_debut_real` date NOT NULL,
+  `tac_fin_real` date NOT NULL,
+  `tac_travail_prevu` decimal(5,1) NOT NULL DEFAULT '0.0',
+  `tac_travail_real` decimal(5,1) NOT NULL DEFAULT '0.0',
+  `tac_employe` int(9) unsigned NOT NULL,
+  `tac_sous_traitant` int(9) unsigned NOT NULL,
+  `tac_type` int(9) unsigned NOT NULL,
+  `tac_etat` int(9) unsigned NOT NULL,
+  `tac_inactif` datetime DEFAULT NULL,
+  PRIMARY KEY (`tac_id`),
+  KEY `tac_emetteur` (`tac_emetteur`),
+  KEY `tac_employe` (`tac_employe`),
+  KEY `tac_sous_traitant` (`tac_sous_traitant`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+--
+-- Stand-in structure for view `view_factures`
+--
+CREATE TABLE IF NOT EXISTS `view_factures` (
+`fac_id` int(9) unsigned
+,`total_ht` decimal(41,3)
+,`remise` decimal(29,3)
+);
+
+--
+-- Structure for view `factures_view`
+--
+DROP TABLE IF EXISTS `factures_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `factures_view` AS select `tlf`.`lif_facture` AS `facture_id`,(case when (`tlf`.`lif_code` <> 'R') then sum(((`tlf`.`lif_prix` * `tlf`.`lif_quantite`) - `tlf`.`lif_remise_ht`)) else 0 end) AS `total_ht`,(case when (`tlf`.`lif_code` = 'R') then sum(`tlf`.`lif_prix`) else 0 end) AS `remise`,`tfc`.`fac_reference` AS `facture_name`,`tfc`.`fac_commande` AS `fac_commande` from (`t_lignes_factures` `tlf` left join `t_factures` `tfc` on((`tlf`.`lif_facture` = `tfc`.`fac_id`))) group by `tfc`.`fac_commande`;
+
+--
+-- Structure for view `global_view`
+--
+DROP TABLE IF EXISTS `global_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `global_view` AS select 'pages jaunes' AS `software`,`tpj`.`pages_jaunes_id` AS `id`,`te2`.`emp_nom` AS `operateur_qui_envoie`,`tpj`.`date_envoi` AS `date_envoi`,`tpj`.`date_limite_de_fin` AS `date_limite_de_fin`,'' AS `stats`,`tc`.`ctc_nom` AS `client`,`tcm`.`cmd_id` AS `cmd_id`,`tcm`.`cmd_reference` AS `commande`,`tml`.`message_list_id` AS `message_id`,`tml`.`name` AS `message_name`,`tml`.`message` AS `message_view`,`tml`.`lien_pour_telecharger` AS `message_lien`,`tml`.`object` AS `message_object`,`tml`.`type` AS `message_type`,`vf`.`vfm_famille` AS `message_famille`,`tsv`.`scv_nom` AS `message_societe`,`te1`.`emp_nom` AS `message_commercial`,`tml`.`email` AS `message_email`,`tml`.`telephone` AS `message_telephone`,'' AS `openemm`,`tpj`.`verification_number` AS `verification_number`,'' AS `deliv_sur_test_orange`,'' AS `deliv_sur_test_free`,'' AS `deliv_sur_test_sfr`,'' AS `deliv_sur_test_gmail`,'' AS `deliv_sur_test_microsoft`,'' AS `deliv_sur_test_yahoo`,'' AS `deliv_sur_test_ovh`,'' AS `deliv_sur_test_oneandone`,'' AS `manual_sender`,'' AS `manual_sender_domain`,`t_production_mails`.`mail` AS `copy_mail`,`tpj`.`number_sent_through` AS `number_sent_through`,`tpj`.`number_sent_mail` AS `number_sent_mail`,'' AS `physical_server`,'' AS `smtp`,'' AS `rotation`,'' AS `computer`,'' AS `segment_part`,'' AS `speed_hours`,'' AS `number_hours`,`tpj`.`quantite_envoyer` AS `quantite_envoyer`,cast(`tpj`.`quantite_envoyee` as signed) AS `openemm_current`,'0' AS `openemm_number_of_open`,'0' AS `openemm_open_rate`,'0' AS `openemm_number_of_click`,'0' AS `openemm_click_rate`,'0' AS `deliv_reelle_bounce`,'0' AS `deliv_reelle_bounce_percentage`,'0' AS `deliv_reelle_hard_bounce_rate`,'0' AS `deliv_reelle_soft_bounce_rate`,'0%' AS `openemm_open_rate_pct`,'0%' AS `openemm_click_rate_pct`,'0%' AS `deliv_reelle_bounce_percentage_pct`,'0%' AS `deliv_reelle_hard_bounce_rate_pct`,'0%' AS `deliv_reelle_soft_bounce_rate_pct`,`fcv`.`facture_name` AS `facture`,`tpj`.`inactive` AS `inactive`,`tpj`.`deleted` AS `deleted`,`fcv`.`facture_id` AS `facture_id`,(`fcv`.`total_ht` * (1 - `fcv`.`remise`)) AS `ht`,'' AS `provider`,'' AS `ip`,'' AS `domain`,'' AS `segment_numero`,'' AS `segment_nom`,'' AS `segment_first_critere`,'' AS `segment_second_critere`,'' AS `segment_many_criterias`,'' AS `number_sent`,'' AS `quantite_envoyee`,'' AS `deliv_reelle_orange`,'' AS `deliv_reelle_free`,'' AS `deliv_reelle_sfr`,'' AS `deliv_reelle_gmail`,'' AS `deliv_reelle_microsoft`,'' AS `deliv_reelle_yahoo`,'' AS `deliv_reelle_ovh`,'' AS `deliv_reelle_oneandone` from (((((((((`t_pages_jaunes` `tpj` left join `t_contacts` `tc` on((`tpj`.`client` = `tc`.`ctc_id`))) left join `t_commandes` `tcm` on((`tpj`.`commande` = `tcm`.`cmd_id`))) left join `factures_view` `fcv` on((`tpj`.`commande` = `fcv`.`fac_commande`))) left join `t_message_list` `tml` on((`tpj`.`message` = `tml`.`message_list_id`))) left join `t_societes_vendeuses` `tsv` on((`tsv`.`scv_id` = `tml`.`societe`))) left join `v_familles` `vf` on((`vf`.`vfm_id` = `tml`.`famille_darticles`))) left join `t_employes` `te1` on((`te1`.`emp_id` = `tml`.`salesman`))) left join `t_employes` `te2` on((`te2`.`emp_id` = `tpj`.`operateur_qui_envoie`))) left join `t_production_mails` on((`t_production_mails`.`production_mails_id` = `tpj`.`copy_mail`))) union select 'manual sending' AS `software`,`tms`.`manual_sending_id` AS `manual_sending_id`,`te2`.`emp_nom` AS `operateur_qui_envoie`,`tms`.`date_envoi` AS `date_envoi`,`tms`.`date_limite_de_fin` AS `date_limite_de_fin`,'' AS `stats`,`tc`.`ctc_nom` AS `client`,`tcm`.`cmd_id` AS `cmd_id`,`tcm`.`cmd_reference` AS `commande`,`tml`.`message_list_id` AS `message_id`,`tml`.`name` AS `message_name`,`tml`.`message` AS `message_view`,`tml`.`lien_pour_telecharger` AS `message_lien`,`tml`.`object` AS `message_object`,`tml`.`type` AS `message_lien`,`vf`.`vfm_famille` AS `message_famille`,`tsv`.`scv_nom` AS `message_societe`,`te1`.`emp_nom` AS `message_commercial`,`tml`.`email` AS `message_email`,`tml`.`telephone` AS `message_telephone`,'' AS `openemm`,`tms`.`verification_number` AS `verification_number`,`tms`.`deliv_sur_test_orange` AS `deliv_sur_test_orange`,`tms`.`deliv_sur_test_free` AS `deliv_sur_test_free`,`tms`.`deliv_sur_test_sfr` AS `deliv_sur_test_sfr`,`tms`.`deliv_sur_test_gmail` AS `deliv_sur_test_gmail`,`tms`.`deliv_sur_test_microsoft` AS `deliv_sur_test_microsoft`,`tms`.`deliv_sur_test_yahoo` AS `deliv_sur_test_yahoo`,`tms`.`deliv_sur_test_ovh` AS `deliv_sur_test_ovh`,`tms`.`deliv_sur_test_oneandone` AS `deliv_sur_test_oneandone`,`t_production_mails`.`mail` AS `mail`,`t_production_mails`.`domain` AS `manual_sender_domain`,'' AS `copy_mail`,'' AS `number_sent_through`,'' AS `number_sent_mail`,'' AS `physical_server`,'' AS `smtp`,'' AS `rotation`,'' AS `computer`,`tms`.`segment_part` AS `segment_part`,`tms`.`speed_hours` AS `speed_hours`,`tms`.`number_hours` AS `number_hours`,`tms`.`quantite_envoyer` AS `quantite_envoyer`,cast(`tms`.`quantite_envoyee` as signed) AS `openemm_current`,'0' AS `openemm_number_of_open`,'0' AS `openemm_open_rate`,'0' AS `openemm_number_of_click`,'0' AS `openemm_click_rate`,'0' AS `deliv_reelle_bounce`,'0' AS `deliv_reelle_bounce_percentage`,'0' AS `deliv_reelle_hard_bounce_rate`,'0' AS `deliv_reelle_soft_bounce_rate`,'0%' AS `openemm_open_rate_pct`,'0%' AS `openemm_click_rate_pct`,'0%' AS `deliv_reelle_bounce_percentage_pct`,'0%' AS `deliv_reelle_hard_bounce_rate_pct`,'0%' AS `deliv_reelle_soft_bounce_rate_pct`,`fcv`.`facture_name` AS `facture`,`tms`.`inactive` AS `inactive`,`tms`.`deleted` AS `deleted`,`fcv`.`facture_id` AS `facture_id`,(`fcv`.`total_ht` * (1 - `fcv`.`remise`)) AS `ht`,'' AS `provider`,'' AS `ip`,'' AS `domain`,'' AS `segment_numero`,'' AS `segment_nom`,'' AS `segment_first_critere`,'' AS `segment_second_critere`,'' AS `segment_many_criterias`,'' AS `number_sent`,'' AS `quantite_envoyee`,'' AS `deliv_reelle_orange`,'' AS `deliv_reelle_free`,'' AS `deliv_reelle_sfr`,'' AS `deliv_reelle_gmail`,'' AS `deliv_reelle_microsoft`,'' AS `deliv_reelle_yahoo`,'' AS `deliv_reelle_ovh`,'' AS `deliv_reelle_oneandone` from (((((((((`t_manual_sending` `tms` left join `t_contacts` `tc` on((`tms`.`client` = `tc`.`ctc_id`))) left join `t_commandes` `tcm` on((`tms`.`commande` = `tcm`.`cmd_id`))) left join `factures_view` `fcv` on((`tms`.`commande` = `fcv`.`fac_commande`))) left join `t_message_list` `tml` on((`tms`.`message` = `tml`.`message_list_id`))) left join `t_societes_vendeuses` `tsv` on((`tsv`.`scv_id` = `tml`.`societe`))) left join `v_familles` `vf` on((`vf`.`vfm_id` = `tml`.`famille_darticles`))) left join `t_employes` `te1` on((`te1`.`emp_id` = `tml`.`salesman`))) left join `t_employes` `te2` on((`te2`.`emp_id` = `tms`.`operateur_qui_envoie`))) left join `t_production_mails` on((`t_production_mails`.`production_mails_id` = `tms`.`manual_sender`))) union select 'max bulk' AS `software`,`tms`.`max_bulk_id` AS `max_bulk_id`,`te2`.`emp_nom` AS `operateur_qui_envoie`,`tms`.`date_envoi` AS `date_envoi`,`tms`.`date_limite_de_fin` AS `date_limite_de_fin`,`tms`.`stats` AS `stats`,`tc`.`ctc_nom` AS `client`,`tcm`.`cmd_id` AS `cmd_id`,`tcm`.`cmd_reference` AS `commande`,`tml`.`message_list_id` AS `message_id`,`tml`.`name` AS `message_name`,`tml`.`message` AS `message_view`,`tml`.`lien_pour_telecharger` AS `message_lien`,`tml`.`object` AS `message_object`,`tml`.`type` AS `message_lien`,`vf`.`vfm_famille` AS `message_famille`,`tsv`.`scv_nom` AS `message_societe`,`te1`.`emp_nom` AS `message_commercial`,`tml`.`email` AS `message_email`,`tml`.`telephone` AS `message_telephone`,'' AS `openemm`,`tms`.`verification_number` AS `verification_number`,`tms`.`deliv_sur_test_orange` AS `deliv_sur_test_orange`,`tms`.`deliv_sur_test_free` AS `deliv_sur_test_free`,`tms`.`deliv_sur_test_sfr` AS `deliv_sur_test_sfr`,`tms`.`deliv_sur_test_gmail` AS `deliv_sur_test_gmail`,`tms`.`deliv_sur_test_microsoft` AS `deliv_sur_test_microsoft`,`tms`.`deliv_sur_test_yahoo` AS `deliv_sur_test_yahoo`,`tms`.`deliv_sur_test_ovh` AS `deliv_sur_test_ovh`,`tms`.`deliv_sur_test_oneandone` AS `deliv_sur_test_oneandone`,'' AS `manual_sender`,'' AS `manual_sender_domain`,'' AS `copy_mail`,'' AS `number_sent_through`,'' AS `number_sent_mail`,`tms`.`physical_server` AS `physical_server`,`tms`.`smtp` AS `smtp`,'' AS `rotation`,`tms`.`computer` AS `computer`,`tms`.`segment_part` AS `segment_part`,'' AS `speed_hours`,'' AS `number_hours`,`tms`.`quantite_envoyer` AS `quantite_envoyer`,cast(`tms`.`quantite_envoyee` as signed) AS `openemm_current`,'0' AS `openemm_number_of_open`,'0' AS `openemm_open_rate`,'0' AS `openemm_number_of_click`,'0' AS `openemm_click_rate`,'0' AS `deliv_reelle_bounce`,'0' AS `deliv_reelle_bounce_percentage`,'0' AS `deliv_reelle_hard_bounce_rate`,'0' AS `deliv_reelle_soft_bounce_rate`,'0%' AS `openemm_open_rate_pct`,'0%' AS `openemm_click_rate_pct`,'0%' AS `deliv_reelle_bounce_percentage_pct`,'0%' AS `deliv_reelle_hard_bounce_rate_pct`,'0%' AS `deliv_reelle_soft_bounce_rate_pct`,`fcv`.`facture_name` AS `facture`,`tms`.`inactive` AS `inactive`,`tms`.`deleted` AS `deleted`,`fcv`.`facture_id` AS `facture_id`,(`fcv`.`total_ht` * (1 - `fcv`.`remise`)) AS `ht`,'' AS `provider`,'' AS `ip`,'' AS `domain`,'' AS `segment_numero`,'' AS `segment_nom`,'' AS `segment_first_critere`,'' AS `segment_second_critere`,'' AS `segment_many_criterias`,'' AS `number_sent`,'' AS `quantite_envoyee`,'' AS `deliv_reelle_orange`,'' AS `deliv_reelle_free`,'' AS `deliv_reelle_sfr`,'' AS `deliv_reelle_gmail`,'' AS `deliv_reelle_microsoft`,'' AS `deliv_reelle_yahoo`,'' AS `deliv_reelle_ovh`,'' AS `deliv_reelle_oneandone` from ((((((((`t_max_bulk` `tms` left join `t_contacts` `tc` on((`tms`.`client` = `tc`.`ctc_id`))) left join `t_commandes` `tcm` on((`tms`.`commande` = `tcm`.`cmd_id`))) left join `factures_view` `fcv` on((`tms`.`commande` = `fcv`.`fac_commande`))) left join `t_message_list` `tml` on((`tms`.`message` = `tml`.`message_list_id`))) left join `t_societes_vendeuses` `tsv` on((`tsv`.`scv_id` = `tml`.`societe`))) left join `v_familles` `vf` on((`vf`.`vfm_id` = `tml`.`famille_darticles`))) left join `t_employes` `te1` on((`te1`.`emp_id` = `tml`.`salesman`))) left join `t_employes` `te2` on((`te2`.`emp_id` = `tms`.`operateur_qui_envoie`))) union select 'openemm' AS `software`,`tms`.`openemm_id` AS `openemm_id`,`te2`.`emp_nom` AS `operateur_qui_envoie`,`tms`.`date_envoi` AS `date_envoi`,`tms`.`date_limite_de_fin` AS `date_limite_de_fin`,`tms`.`stats` AS `stats`,`tc`.`ctc_nom` AS `client`,`tcm`.`cmd_id` AS `cmd_id`,`tcm`.`cmd_reference` AS `commande`,`tml`.`message_list_id` AS `message_id`,`tml`.`name` AS `message_name`,`tml`.`message` AS `message_view`,`tml`.`lien_pour_telecharger` AS `message_lien`,`tml`.`object` AS `message_object`,`tml`.`type` AS `message_lien`,`vf`.`vfm_famille` AS `message_famille`,`tsv`.`scv_nom` AS `message_societe`,`te1`.`emp_nom` AS `message_commercial`,`tml`.`email` AS `message_email`,`tml`.`telephone` AS `message_telephone`,`tms`.`openemm` AS `openemm`,'' AS `verification_number`,`tms`.`deliv_sur_test_orange` AS `deliv_sur_test_orange`,`tms`.`deliv_sur_test_free` AS `deliv_sur_test_free`,`tms`.`deliv_sur_test_sfr` AS `deliv_sur_test_sfr`,`tms`.`deliv_sur_test_gmail` AS `deliv_sur_test_gmail`,`tms`.`deliv_sur_test_microsoft` AS `deliv_sur_test_microsoft`,`tms`.`deliv_sur_test_yahoo` AS `deliv_sur_test_yahoo`,`tms`.`deliv_sur_test_ovh` AS `deliv_sur_test_ovh`,`tms`.`deliv_sur_test_oneandone` AS `deliv_sur_test_oneandone`,'' AS `manual_sender`,'' AS `manual_sender_domain`,'' AS `copy_mail`,'' AS `number_sent_through`,'' AS `number_sent_mail`,`tms`.`physical_server` AS `physical_server`,`tms`.`smtp` AS `smtp`,`tms`.`rotation` AS `rotation`,'' AS `computer`,`tms`.`segment_part` AS `segment_part`,'' AS `speed_hours`,'' AS `number_hours`,`tos`.`total` AS `quantite_envoyer`,`tos`.`current` AS `openemm_current`,`tos`.`number_of_open` AS `openemm_number_of_open`,`tos`.`open_rate` AS `openemm_open_rate`,`tos`.`number_of_click` AS `openemm_number_of_click`,`tos`.`click_rate` AS `openemm_click_rate`,`tos`.`bounce` AS `deliv_reelle_bounce`,`tos`.`bounce_rate` AS `deliv_reelle_bounce_percentage`,`tos`.`hard_bounce_rate` AS `deliv_reelle_hard_bounce_rate`,`tos`.`soft_bounce_rate` AS `deliv_reelle_soft_bounce_rate`,concat(round((`tos`.`open_rate` * 100),2),'%') AS `openemm_open_rate_pct`,concat(round((`tos`.`click_rate` * 100),2),'%') AS `openemm_click_rate_pct`,concat(round((`tos`.`bounce_rate` * 100),2),'%') AS `deliv_reelle_bounce_percentage_pct`,concat(round((`tos`.`hard_bounce_rate` * 100),2),'%') AS `deliv_reelle_hard_bounce_rate_pct`,concat(round((`tos`.`soft_bounce_rate` * 100),2),'%') AS `deliv_reelle_soft_bounce_rate_pct`,`fcv`.`facture_name` AS `facture`,`tms`.`inactive` AS `inactive`,`tms`.`deleted` AS `deleted`,`fcv`.`facture_id` AS `facture_id`,(`fcv`.`total_ht` * (1 - `fcv`.`remise`)) AS `ht`,'' AS `provider`,'' AS `ip`,'' AS `domain`,'' AS `segment_numero`,'' AS `segment_nom`,'' AS `segment_first_critere`,'' AS `segment_second_critere`,'' AS `segment_many_criterias`,'' AS `number_sent`,'' AS `quantite_envoyee`,'' AS `deliv_reelle_orange`,'' AS `deliv_reelle_free`,'' AS `deliv_reelle_sfr`,'' AS `deliv_reelle_gmail`,'' AS `deliv_reelle_microsoft`,'' AS `deliv_reelle_yahoo`,'' AS `deliv_reelle_ovh`,'' AS `deliv_reelle_oneandone` from (((((((((`t_openemm` `tms` left join `t_contacts` `tc` on((`tms`.`client` = `tc`.`ctc_id`))) left join `t_commandes` `tcm` on((`tms`.`commande` = `tcm`.`cmd_id`))) left join `factures_view` `fcv` on((`tms`.`commande` = `fcv`.`fac_commande`))) left join `t_message_list` `tml` on((`tms`.`message` = `tml`.`message_list_id`))) left join `t_societes_vendeuses` `tsv` on((`tsv`.`scv_id` = `tml`.`societe`))) left join `v_familles` `vf` on((`vf`.`vfm_id` = `tml`.`famille_darticles`))) left join `t_employes` `te1` on((`te1`.`emp_id` = `tml`.`salesman`))) left join `t_employes` `te2` on((`te2`.`emp_id` = `tms`.`operateur_qui_envoie`))) left join `t_openemm_stats` `tos` on((`tos`.`openemm_id` = `tms`.`openemm`)));
+
+
+--
+-- Structure for view `view_factures`
+--
+DROP TABLE IF EXISTS `view_factures`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_factures` AS select `tlf`.`lif_facture` AS `fac_id`,(case when (`tlf`.`lif_code` <> 'R') then sum(((`tlf`.`lif_prix` * `tlf`.`lif_quantite`) - `tlf`.`lif_remise_ht`)) else 0 end) AS `total_ht`,(case when (`tlf`.`lif_code` = 'R') then sum(`tlf`.`lif_prix`) else 0 end) AS `remise` from `t_lignes_factures` `tlf` group by `tlf`.`lif_facture`;

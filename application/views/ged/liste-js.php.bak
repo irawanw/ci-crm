@@ -1,0 +1,37 @@
+<?php 
+$this->load->view('templates/remove_confirmation_js.php');
+$this->load->view('templates/remove_confirmation.php'); 
+
+?>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.fancybox.pack.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#datatable tbody').on('click', 'tr', function(e) {
+            var table = $('#datatable').DataTable();
+            var data = table.row(this).data();
+
+            $('#btn-remove').prop("href", "<?php echo site_url('ged/supprimer');?>/"+data.storage+"/?path=" + data.name);
+
+            $('#ged_supprimer').removeClass("disabled");
+
+            /*console.log(data.storage);*/
+        });
+        $('#ged_supprimer').click(function(e) {
+            e.preventDefault();
+            $('#modal-form-remove').modal('show');
+        });
+
+        $('#filter-document-type').change(function(e) {
+            var documentType = $(this).val();
+            if(documentType != "") {
+                window.location = "<?php echo site_url('ged/document');?>/" + documentType;
+            } else {
+                window.location = "<?php echo site_url('ged');?>";
+            }
+        });
+
+        $(".preview-image").fancybox({
+            openEffect: 'fade'
+        });
+	});
+</script>

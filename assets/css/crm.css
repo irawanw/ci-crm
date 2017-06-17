@@ -1,0 +1,179 @@
+/* réglages des grid Kendo UI */
+
+/* couleur de sélection */
+.k-state-selected a:not(.k-button) {
+    color: yellow;
+}
+/*  bordures */
+.k-grid td  {
+    border-bottom-width: 1px;
+}
+.k-grid tr:last-of-type td {
+    border-bottom-width: 0;
+}
+.action-sep {
+    border-right: 1px solid silver;
+}
+
+/* passage en largeur auto et taille des caractères*/
+.k-grid {
+    font-size: 12px;
+    display: inline-block;
+    width: auto;
+}
+.k-grid table {
+    width: auto;
+}
+
+/* largeur minimale des colonnes */
+.k-grid th {
+    min-width: 60px;
+}
+
+/* masquage du bouton de suppression de filtre */
+.k-filtercell button {
+    display: none;
+}
+.k-filtercell>span {
+    padding-right: 2.1em;
+}
+.k-filter-row th {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.k-filter-row .k-dropdown-operator {
+    right: 0
+}
+
+/* cadre autour des fiches */
+.fiche {
+    border: 1px solid silver;
+    padding-right: 20px;
+}
+
+/* container */
+.container {
+    width: 100%;
+}
+
+/* chemin de fer */
+.cdf {
+    margin-bottom: 3px;
+}
+.cdf-row {
+    border-bottom: 1px solid Silver;
+}
+.cdf-inactif {
+    padding: 5px 0 12px 0;
+    border-bottom: 1px solid Silver;
+    border-radius: 0;
+}
+.cdf-actif {
+    padding: 5px 0 12px 0;
+    border-left: 1px solid Silver;
+    border-top: 1px solid Silver;
+    border-right: 1px solid Silver;
+    border-radius: 3px 3px 0 0;
+}
+
+/* barre d'action */
+.action-bar {
+    background-color: #eee;
+}
+.action-confirm-danger .action-button-conf,
+.action-negative a {
+    color: #a94442;
+}
+.action-confirm-danger .action-button-conf:hover,
+.action-negative a:hover {
+    color: #843534;
+}
+.action-positive a {
+    color: #3c763d;
+}
+.action-positive a:hover {
+    color: #2b542c;
+}
+.action-text {
+    font-size:75%;
+}
+.action-double-click-handler {
+    font-weight: bolder;
+}
+.action-double-click-handler .action-text {
+    font-size: 85%;
+}
+
+/* modals */
+.template-modal .modal-dialog {
+    width: 80% ; /* responsive width */
+}
+
+.template-modal .modal-dialog .modal-sm {
+    width: 300px;
+}
+
+/* miscellaneous modals */
+#modal-retour-confirm .modal-dialog {
+    width: 400px ;
+}
+#ajouter_server .modal-dialog {
+    width: 80% ;
+}
+
+/* guides */
+.guide {
+    border-bottom: 1px solid Silver;
+    margin-bottom: 10px;
+}
+
+.custom-toolbar {
+    margin-left: 10px !important;
+}
+
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top:0;
+    left:100%;
+    margin-top:-6px;
+    margin-left:-1px;
+    -webkit-border-radius:0 6px 6px 6px;
+    -moz-border-radius:0 6px 6px 6px;
+    border-radius:0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+    display:block;
+}
+.dropdown-submenu>a:after {
+    display:block;
+    content:" ";
+    float:right;
+    width:0;
+    height:0;
+    border-color:transparent;
+    border-style:solid;
+    border-width:5px 0 5px 5px;
+    border-left-color:#cccccc;
+    margin-top:5px;
+    margin-right:-10px;
+}
+.dropdown-submenu:hover>a:after {
+    border-left-color:#ffffff;
+}
+.dropdown-submenu.pull-left {
+    float:none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left:-100%;
+    margin-left:10px;
+    -webkit-border-radius:6px 0 6px 6px;
+    -moz-border-radius:6px 0 6px 6px;
+    border-radius:6px 0 6px 6px;
+}
+
+/* datatable customizations */
+.avoir-etat-utilise {
+    font-style: italic;
+}

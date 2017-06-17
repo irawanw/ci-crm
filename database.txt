@@ -1,0 +1,988 @@
+CREATE TABLE IF NOT EXISTS `v_actions` (
+	`vat_id` INT(1) UNSIGNED NOT NULL,
+	`vat_action` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_actions` PRIMARY KEY(`vat_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_activites` (
+	`vac_id` INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vac_activite` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_activites` PRIMARY KEY(`vac_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_chaleur` (
+	`vch_id` INT(1) UNSIGNED NOT NULL,
+	`vch_degre` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_chaleur` PRIMARY KEY(`vch_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_civilites` (
+	`vcv_id` INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vcv_civilite` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_civilites` PRIMARY KEY(`vcv_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_clients_prospects` (
+	`vcp_id` INT(1) UNSIGNED NOT NULL,
+	`vcp_type` VARCHAR(10) NOT NULL,
+	CONSTRAINT `pk_v_clients_prospects` PRIMARY KEY(`vcp_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_criteres` (
+	`vcr_id` INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vcr_critere` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_criteres` PRIMARY KEY(`vcr_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_etats_alertes` (
+	`vea_id` INT(1) UNSIGNED NOT NULL,
+	`vea_etat` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_etats_alertes` PRIMARY KEY(`vea_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_etats_avoirs` (
+	`vev_id` INT(1) UNSIGNED NOT NULL,
+	`vev_etat` VARCHAR(25) NOT NULL,
+	CONSTRAINT `pk_v_etats_avoirs` PRIMARY KEY(`vev_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_etats_commandes` (
+	`vec_id` INT(1) UNSIGNED NOT NULL,
+	`vec_etat` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_etats_commandes` PRIMARY KEY(`vec_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_etats_devis` (
+	`ved_id` INT(1) UNSIGNED NOT NULL,
+	`ved_etat` VARCHAR(25) NOT NULL,
+	CONSTRAINT `pk_v_etats_devis` PRIMARY KEY(`ved_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_etats_employes` (
+	`vee_id` INT(1) UNSIGNED NOT NULL,
+	`vee_etat` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_etats_employes` PRIMARY KEY(`vee_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_etats_factures` (
+	`vef_id` INT(1) UNSIGNED NOT NULL,
+	`vef_etat` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_etats_factures` PRIMARY KEY(`vef_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_etats_ordres_production` (
+	`veot_id` INT(1) UNSIGNED NOT NULL,
+	`veo_etat` VARCHAR(20) NOT NULL
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_etats_taches` (
+	`vet_id` INT(1) UNSIGNED NOT NULL,
+	`vet_etat` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_etats_taches` PRIMARY KEY(`vet_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_familles` (
+	`vfm_id` INT(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vfm_famille` VARCHAR(30) NOT NULL,
+	`vfm_nom` VARCHAR(20) NOT NULL,
+	`vfm_code` VARCHAR(2) NOT NULL,
+	`vfm_production` INT(1) NOT NULL,
+	CONSTRAINT `pk_v_familles` PRIMARY KEY(`vfm_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_familles_modeles_documents` (
+	`vfd_id` INT(1) UNSIGNED NOT NULL,
+	`vfd_famille_modele` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_familles_modeles_documents` PRIMARY KEY(`vfd_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_fonctions` (
+	`vfo_id` INT(2) UNSIGNED NOT NULL,
+	`vfo_fonction` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_fonctions` PRIMARY KEY(`vfo_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_natures` (
+	`vnt_id` INT(1) UNSIGNED NOT NULL,
+	`vnt_evenement` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_natures` PRIMARY KEY(`vnt_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_referes` (
+	`vrf_id` INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vrf_label` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_referes` PRIMARY KEY(`vrf_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_sons` (
+	`vso_id` INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vso_son` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_sons` PRIMARY KEY(`vso_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_adresses` (
+	`vtad_id` INT(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vtad_type` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_types_adresses` PRIMARY KEY(`vtad_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_alertes` (
+	`vtal_id` INT(2) UNSIGNED NOT NULL,
+	`vtal_type` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_types_alertes` PRIMARY KEY(`vtal_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_avoirs` (
+	`vta_id` INT(2) UNSIGNED NOT NULL,
+	`vta_type` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_types_avoirs` PRIMARY KEY(`vta_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_distributions` (
+	`vtdi_id` INT(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vtdi_type` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_types_distributions` PRIMARY KEY(`vtdi_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_documents` (
+	`vtd_id` INT(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vtd_type` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_types_documents` PRIMARY KEY(`vtd_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_droits` (
+	`vto_id` INT(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vto_type` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_types_droits` PRIMARY KEY(`vto_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_factures` (
+	`vtf_id` INT(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vtf_type` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_types_factures` PRIMARY KEY(`vtf_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_modeles_documents` (
+	`vtm_id` INT(1) UNSIGNED NOT NULL,
+	`vtm_type_modele` VARCHAR(20) NOT NULL,
+	CONSTRAINT `pk_v_types_modeles_documents` PRIMARY KEY(`vtm_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_reglements` (
+	`vtr_id` INT(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vtr_type` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_types_reglements` PRIMARY KEY(`vtr_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_secteurs` (
+	`vts_id` INT(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vts_type` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_types_secteurs` PRIMARY KEY(`vts_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_taches` (
+	`vtt_id` INT(2) UNSIGNED NOT NULL,
+	`vtt_type` VARCHAR(30) NOT NULL,
+	`vtt_code` VARCHAR(10) NOT NULL,
+	CONSTRAINT `pk_v_types_taches` PRIMARY KEY(`vtt_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_types_utilisateurs` (
+	`vtu_id` INT(2) UNSIGNED NOT NULL,
+	`vtu_type` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_types_utilisateurs` PRIMARY KEY(`vtu_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `v_visibilites` (
+	`vvi_id` INT(2) UNSIGNED NOT NULL,
+	`vvi_visibilite` VARCHAR(30) NOT NULL,
+	CONSTRAINT `pk_v_visibilites` PRIMARY KEY(`vvi_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_actions` (
+	`act_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`act_date` DATETIME NOT NULL,
+	`act_table` VARCHAR(30) NOT NULL DEFAULT '',
+	`act_obj_id` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`act_champ_id` VARCHAR(30) NOT NULL DEFAULT '',
+	`act_info` VARCHAR(5000) NOT NULL DEFAULT '',
+	`act_user` INT(9) UNSIGNED NOT NULL,
+	`act_action` INT(9) UNSIGNED NOT NULL,
+	`act_restauration` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	CONSTRAINT `pk_t_actions` PRIMARY KEY(`act_id`),
+	KEY `act_user` (`act_user`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_adresses` (
+	`adr_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`adr_adresse` VARCHAR(400) NOT NULL DEFAULT '',
+	`adr_cp` VARCHAR(5) NOT NULL DEFAULT '',
+	`adr_ville` VARCHAR(50) NOT NULL DEFAULT '',
+	`adr_contact` VARCHAR(400) NOT NULL DEFAULT '',
+	`adr_info` VARCHAR(400) NOT NULL DEFAULT '',
+	`adr_secteur` INT(9) UNSIGNED NOT NULL,
+	`adr_type` INT(9) UNSIGNED NOT NULL,
+	`adr_visibilite` INT(9) UNSIGNED NOT NULL,
+	`adr_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_adresses` PRIMARY KEY(`adr_id`),
+	KEY `adr_secteur` (`adr_secteur`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_alertes` (
+	`ale_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`ale_date` DATETIME NOT NULL,
+	`ale_evenement` INT(9) UNSIGNED NOT NULL,
+	`ale_tache` INT(9) UNSIGNED NOT NULL,
+	`ale_destinataire` INT(9) UNSIGNED NOT NULL,
+	`ale_type` INT(9) UNSIGNED NOT NULL,
+	`ale_etat` INT(9) UNSIGNED NOT NULL,
+	`ale_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_alertes` PRIMARY KEY(`ale_id`),
+	KEY `ale_evenement` (`ale_evenement`),
+	KEY `ale_tache` (`ale_tache`),
+	KEY `ale_destinataire` (`ale_destinataire`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_articles` (
+	`art_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`art_code` VARCHAR(30) NOT NULL DEFAULT '',
+	`art_prod` VARCHAR(5) NOT NULL DEFAULT '',
+	`art_description` VARCHAR(200) NOT NULL DEFAULT '',
+	`art_libelle` VARCHAR(400) NOT NULL DEFAULT '',
+	`art_prix` DECIMAL(7,4) NOT NULL DEFAULT 0,
+	`art_selection` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`art_catalogue` INT(9) UNSIGNED NOT NULL,
+	`art_data` VARCHAR(1000) NOT NULL DEFAULT '',
+	`art_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_articles` PRIMARY KEY(`art_id`),
+	KEY `art_catalogue` (`art_catalogue`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_articles_devis` (
+	`ard_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`ard_code` VARCHAR(30) NOT NULL DEFAULT '',
+	`ard_prix` DECIMAL(7,4) NOT NULL DEFAULT 0,
+	`ard_quantite` INT(5) UNSIGNED NOT NULL DEFAULT 0,
+	`ard_description` VARCHAR(400) NOT NULL DEFAULT '',
+	`ard_info` VARCHAR(100) NOT NULL DEFAULT '',
+	`ard_remise_taux` DECIMAL(4,2) NOT NULL DEFAULT 0,
+	`ard_remise_ht` DECIMAL(6,2) NOT NULL DEFAULT 0,
+	`ard_remise_ttc` DECIMAL(6,2) NOT NULL DEFAULT 0,
+	`ard_article` INT(9) UNSIGNED NOT NULL,
+	`ard_devis` INT(9) UNSIGNED NOT NULL,
+	`ard_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_articles_devis` PRIMARY KEY(`ard_id`),
+	KEY `ard_article` (`ard_article`),
+	KEY `ard_devis` (`ard_devis`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_avoirs` (
+	`avr_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`avr_numero` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`avr_reference` VARCHAR(10) NOT NULL DEFAULT '',
+	`avr_date` DATE NOT NULL,
+	`avr_montant_ttc` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`avr_etat` INT(9) UNSIGNED NOT NULL,
+	`avr_type` INT(9) UNSIGNED NOT NULL,
+	`avr_justification` VARCHAR(400) NOT NULL DEFAULT '',
+	`avr_facture` INT(9) UNSIGNED NOT NULL,
+	`avr_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_avoirs` PRIMARY KEY(`avr_id`),
+	KEY `avr_facture` (`avr_facture`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_boites_archive` (
+	`bar_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`bar_code` VARCHAR(10) NOT NULL DEFAULT '',
+	`bar_commentaire` VARCHAR(100) NOT NULL DEFAULT '',
+	`bar_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_boites_archive` PRIMARY KEY(`bar_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_catalogues` (
+	`cat_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`cat_famille` INT(9) UNSIGNED NOT NULL,
+	`cat_version` VARCHAR(30) NOT NULL DEFAULT '',
+	`cat_date` DATE NOT NULL,
+	`cat_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_catalogues` PRIMARY KEY(`cat_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_commandes` (
+	`cmd_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`cmd_numero` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`cmd_reference` VARCHAR(10) NOT NULL DEFAULT '',
+	`cmd_date` DATE NOT NULL,
+	`cmd_devis` INT(9) UNSIGNED NOT NULL,
+	`cmd_cmd_maitre` INT(9) UNSIGNED NOT NULL,
+	`cmd_etat` INT(9) UNSIGNED NOT NULL,
+	`cmd_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_commandes` PRIMARY KEY(`cmd_id`),
+	KEY `cmd_devis` (`cmd_devis`),
+	KEY `cmd_cmd_maitre` (`cmd_cmd_maitre`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_contacts` (
+	`ctc_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`ctc_id_comptable` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_id_prospect` VARCHAR(20) NOT NULL DEFAULT '',
+	`ctc_date_creation` DATETIME NOT NULL,
+	`ctc_nom` VARCHAR(100) NOT NULL DEFAULT '',
+	`ctc_adresse` VARCHAR(400) NOT NULL DEFAULT '',
+	`ctc_cp` VARCHAR(5) NOT NULL DEFAULT '',
+	`ctc_ville` VARCHAR(50) NOT NULL DEFAULT '',
+	`ctc_complement` VARCHAR(40) NOT NULL DEFAULT '',
+	`ctc_telephone` VARCHAR(10) NOT NULL DEFAULT '',
+	`ctc_fax` VARCHAR(10) NOT NULL DEFAULT '',
+	`ctc_mobile` VARCHAR(10) NOT NULL DEFAULT '',
+	`ctc_email` VARCHAR(100) NOT NULL DEFAULT '',
+	`ctc_client_prospect` INT(9) UNSIGNED NOT NULL,
+	`ctc_fournisseur` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_activite` INT(9) UNSIGNED NOT NULL,
+	`ctc_origine` VARCHAR(40) NOT NULL DEFAULT '',
+	`ctc_url` VARCHAR(200) NOT NULL DEFAULT '',
+	`ctc_info_connexion` VARCHAR(200) NOT NULL DEFAULT '',
+	`ctc_commercial` INT(9) UNSIGNED NOT NULL,
+	`ctc_site` VARCHAR(200) NOT NULL DEFAULT '',
+	`ctc_notes` VARCHAR(1000) NOT NULL DEFAULT '',
+	`ctc_qual_comm` VARCHAR(40) NOT NULL DEFAULT '',
+	`ctc_prospection` VARCHAR(40) NOT NULL DEFAULT '',
+	`ctc_prix_rural` DECIMAL(6,2) NOT NULL DEFAULT 0,
+	`ctc_prix_urbain` DECIMAL(6,2) NOT NULL DEFAULT 0,
+	`ctc_prix_urgent` DECIMAL(6,2) NOT NULL DEFAULT 0,
+	`ctc_prix_cible` DECIMAL(6,2) NOT NULL DEFAULT 0,
+	`ctc_login` VARCHAR(20) NOT NULL DEFAULT '',
+	`ctc_type_distribution` INT(9) UNSIGNED NOT NULL,
+	`ctc_dist_hlm` INT(3) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_dist_res` INT(3) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_dist_pav` INT(3) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_stock` INT(6) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_cycle_complet` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_del_avant_distrib` INT(3) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_poids` INT(4) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_doc_manuel` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_sonner` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`ctc_livr_adresse` VARCHAR(400) NOT NULL DEFAULT '',
+	`ctc_livr_cp` VARCHAR(5) NOT NULL DEFAULT '',
+	`ctc_livr_ville` VARCHAR(50) NOT NULL DEFAULT '',
+	`ctc_livr_horaire` VARCHAR(40) NOT NULL DEFAULT '',
+	`ctc_livr_info` VARCHAR(400) NOT NULL DEFAULT '',
+	`ctc_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_contacts` PRIMARY KEY(`ctc_id`),
+	KEY `ctc_commercial` (`ctc_commercial`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_correspondants` (
+	`cor_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`cor_civilite` INT(9) UNSIGNED NOT NULL,
+	`cor_prenom` VARCHAR(50) NOT NULL DEFAULT '',
+	`cor_nom` VARCHAR(50) NOT NULL DEFAULT '',
+	`cor_login` VARCHAR(20) NOT NULL DEFAULT '',
+	`cor_mot_de_passe` VARCHAR(100) NOT NULL DEFAULT '',
+	`sys_salt` VARCHAR(6) NOT NULL DEFAULT '',
+	`cor_description` VARCHAR(200) NOT NULL DEFAULT '',
+	`cor_adresse` VARCHAR(400) NOT NULL DEFAULT '',
+	`cor_cp` VARCHAR(5) NOT NULL DEFAULT '',
+	`cor_ville` VARCHAR(50) NOT NULL DEFAULT '',
+	`cor_complement` VARCHAR(40) NOT NULL DEFAULT '',
+	`cor_telephone1` VARCHAR(10) NOT NULL DEFAULT '',
+	`cor_telephone2` VARCHAR(10) NOT NULL DEFAULT '',
+	`cor_fax` VARCHAR(10) NOT NULL DEFAULT '',
+	`cor_email` VARCHAR(100) NOT NULL DEFAULT '',
+	`cor_msg_distr` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`cor_msg_cmd` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`cor_contact` INT(9) UNSIGNED NOT NULL,
+	`cor_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_correspondants` PRIMARY KEY(`cor_id`),
+	KEY `cor_contact` (`cor_contact`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_devis` (
+	`dvi_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`dvi_numero` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`dvi_reference` VARCHAR(30) NOT NULL DEFAULT '',
+	`dvi_date` DATE NOT NULL,
+	`dvi_tva` DECIMAL(6,4) NOT NULL DEFAULT 0,
+	`dvi_chaleur` INT(9) UNSIGNED NOT NULL,
+	`dvi_correspondant` INT(9) UNSIGNED NOT NULL,
+	`dvi_client` INT(9) UNSIGNED NOT NULL,
+	`dvi_societe_vendeuse` INT(9) UNSIGNED NOT NULL,
+	`dvi_montant_htnr` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`dvi_montant_ht` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`dvi_montant_ttc` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`dvi_etat` INT(9) UNSIGNED NOT NULL,
+	`dvi_notes` VARCHAR(1000) NOT NULL DEFAULT '',
+	`dvi_transmis` VARCHAR(1000) NOT NULL DEFAULT '',
+	`dvi_relance` VARCHAR(1000) NOT NULL DEFAULT '',
+	`dvi_couleur` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`dvi_rappel` DATETIME NOT NULL,
+	`dvi_id_rappel` INT(9) UNSIGNED NOT NULL,
+	`dvi_fichier` VARCHAR(100) NOT NULL DEFAULT '',
+	`dvi_id_comptable` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`dvi_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_devis` PRIMARY KEY(`dvi_id`),
+	KEY `dvi_correspondant` (`dvi_correspondant`),
+	KEY `dvi_client` (`dvi_client`),
+	KEY `dvi_societe_vendeuse` (`dvi_societe_vendeuse`),
+	KEY `dvi_id_rappel` (`dvi_id_rappel`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_disques_archivage` (
+	`dsq_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`dsq_nom` VARCHAR(30) NOT NULL DEFAULT '',
+	`dsq_commentaire` VARCHAR(100) NOT NULL DEFAULT '',
+	`dsq_chemin` VARCHAR(200) NOT NULL DEFAULT '',
+	`dsq_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_disques_archivage` PRIMARY KEY(`dsq_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_documents_autres` (
+	`doa_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`doa_date` DATE NOT NULL,
+	`doa_type` INT(9) UNSIGNED NOT NULL,
+	`doa_nom` VARCHAR(50) NOT NULL DEFAULT '',
+	`doa_fichier` VARCHAR(100) NOT NULL DEFAULT '',
+	`doa_boite_archive` INT(9) UNSIGNED NOT NULL,
+	`doa_disque_archivage` INT(9) UNSIGNED NOT NULL,
+	`doa_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_documents_autres` PRIMARY KEY(`doa_id`),
+	KEY `doa_boite_archive` (`doa_boite_archive`),
+	KEY `doa_disque_archivage` (`doa_disque_archivage`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_documents_contacts` (
+	`doc_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`doc_date` DATETIME NOT NULL,
+	`doc_modele` INT(9) UNSIGNED NOT NULL,
+	`doc_fichier` VARCHAR(100) NOT NULL DEFAULT '',
+	`doc_contact` INT(9) UNSIGNED NOT NULL,
+	`doc_disque_archivage` INT(9) UNSIGNED NOT NULL,
+	`doc_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_documents_contacts` PRIMARY KEY(`doc_id`),
+	KEY `doc_modele` (`doc_modele`),
+	KEY `doc_contact` (`doc_contact`),
+	KEY `doc_disque_archivage` (`doc_disque_archivage`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_documents_employes` (
+	`doe_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`doe_date` DATETIME NOT NULL,
+	`doe_modele` INT(9) UNSIGNED NOT NULL,
+	`doe_fichier` VARCHAR(100) NOT NULL DEFAULT '',
+	`doe_employe` INT(9) UNSIGNED NOT NULL,
+	`doe_disque_archivage` INT(9) UNSIGNED NOT NULL,
+	`doe_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_documents_employes` PRIMARY KEY(`doe_id`),
+	KEY `doe_modele` (`doe_modele`),
+	KEY `doe_employe` (`doe_employe`),
+	KEY `doe_disque_archivage` (`doe_disque_archivage`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_documents_factures` (
+	`dof_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`dof_date` DATE NOT NULL,
+	`dof_nom` VARCHAR(50) NOT NULL DEFAULT '',
+	`dof_fichier` VARCHAR(100) NOT NULL DEFAULT '',
+	`dof_montant` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`dof_fournisseur` INT(9) UNSIGNED NOT NULL,
+	`dof_boite_archive` INT(9) UNSIGNED NOT NULL,
+	`dof_disque_archivage` INT(9) UNSIGNED NOT NULL,
+	`dof_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_documents_factures` PRIMARY KEY(`dof_id`),
+	KEY `dof_fournisseur` (`dof_fournisseur`),
+	KEY `dof_boite_archive` (`dof_boite_archive`),
+	KEY `dof_disque_archivage` (`dof_disque_archivage`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_droits` (
+	`dro_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`dro_type_droit` INT(9) UNSIGNED NOT NULL,
+	`dro_visibilite` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`dro_profil` INT(9) UNSIGNED NOT NULL,
+	`dro_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_droits` PRIMARY KEY(`dro_id`),
+	KEY `dro_profil` (`dro_profil`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_emails_emp` (
+	`eme_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`eme_objet` VARCHAR(100) NOT NULL DEFAULT '',
+	`eme_contenu` VARCHAR(2000) NOT NULL DEFAULT '',
+	`eme_employe` INT(9) UNSIGNED NOT NULL,
+	CONSTRAINT `pk_t_emails_emp` PRIMARY KEY(`eme_id`),
+	KEY `eme_employe` (`eme_employe`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_employes` (
+	`emp_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`emp_civilite` INT(9) UNSIGNED NOT NULL,
+	`emp_prenom` VARCHAR(50) NOT NULL DEFAULT '',
+	`emp_nom` VARCHAR(50) NOT NULL DEFAULT '',
+	`emp_fonction` INT(9) UNSIGNED NOT NULL,
+	`emp_date_entree` DATE NOT NULL,
+	`emp_date_sortie` DATE NOT NULL,
+	`emp_commission` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`emp_etat` INT(9) UNSIGNED NOT NULL,
+	`emp_notes` VARCHAR(1000) NOT NULL DEFAULT '',
+	`emp_adresse` VARCHAR(400) NOT NULL DEFAULT '',
+	`emp_cp` VARCHAR(5) NOT NULL DEFAULT '',
+	`emp_ville` VARCHAR(50) NOT NULL DEFAULT '',
+	`emp_telephone1` VARCHAR(10) NOT NULL DEFAULT '',
+	`emp_telephone2` VARCHAR(10) NOT NULL DEFAULT '',
+	`emp_email` VARCHAR(100) NOT NULL DEFAULT '',
+	`emp_h_jour` INT(2) UNSIGNED NOT NULL DEFAULT 0,
+	`emp_h_semaine` INT(2) UNSIGNED NOT NULL DEFAULT 0,
+	`emp_h_mois` INT(3) UNSIGNED NOT NULL DEFAULT 0,
+	`emp_cout_heure` DECIMAL(6,2) NOT NULL DEFAULT 0,
+	`emp_cv_vehicule` INT(2) UNSIGNED NOT NULL DEFAULT 0,
+	`emp_immatriculation` VARCHAR(10) NOT NULL DEFAULT '',
+	`emp_ptc` INT(5) UNSIGNED NOT NULL DEFAULT 0,
+	`emp_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_employes` PRIMARY KEY(`emp_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_evenements` (
+	`evn_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`evn_date` DATETIME NOT NULL,
+	`evn_objet` VARCHAR(100) NOT NULL DEFAULT '',
+	`evn_duree` VARCHAR(20) NOT NULL DEFAULT '',
+	`evn_contenu` VARCHAR(2000) NOT NULL DEFAULT '',
+	`evn_client` INT(9) UNSIGNED NOT NULL,
+	`evn_nature` INT(9) UNSIGNED NOT NULL,
+	`evn_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_evenements` PRIMARY KEY(`evn_id`),
+	KEY `evn_client` (`evn_client`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_evenements_taches` (
+	`evt_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`evt_commentaire` VARCHAR(50) NOT NULL DEFAULT '',
+	`evt_date` DATETIME NOT NULL,
+	`evt_tache` INT(9) UNSIGNED NOT NULL,
+	`evt_etat` INT(9) UNSIGNED NOT NULL,
+	`evt_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_evenements_taches` PRIMARY KEY(`evt_id`),
+	KEY `evt_tache` (`evt_tache`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_factures` (
+	`fac_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`fac_numero` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`fac_reference` VARCHAR(30) NOT NULL DEFAULT '',
+	`fac_date` DATE NOT NULL,
+	`fac_tva` DECIMAL(6,4) NOT NULL DEFAULT 0,
+	`fac_montant_htnr` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`fac_montant_ht` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`fac_montant_tva` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`fac_montant_ttc` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`fac_delai_paiement` INT(3) UNSIGNED NOT NULL DEFAULT 0,
+	`fac_type` INT(9) UNSIGNED NOT NULL,
+	`fac_etat` INT(9) UNSIGNED NOT NULL,
+	`fac_commande` INT(9) UNSIGNED NOT NULL,
+	`fac_regle` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`fac_reste` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`fac_transmise` VARCHAR(1000) NOT NULL DEFAULT '',
+	`fac_relance` VARCHAR(5000) NOT NULL DEFAULT '',
+	`fac_contentieux` VARCHAR(1000) NOT NULL DEFAULT '',
+	`fac_notes` VARCHAR(1000) NOT NULL DEFAULT '',
+	`fac_rappel` DATETIME NOT NULL,
+	`fac_id_rappel` INT(9) UNSIGNED NOT NULL,
+	`fac_couleur` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`fac_masque` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`fac_fichier` VARCHAR(100) NOT NULL DEFAULT '',
+	`fac_reprise` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`fac_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_factures` PRIMARY KEY(`fac_id`),
+	KEY `fac_commande` (`fac_commande`),
+	KEY `fac_id_rappel` (`fac_id_rappel`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_id_comptable` (
+	`idc_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`idc_contact` INT(9) UNSIGNED NOT NULL,
+	CONSTRAINT `pk_t_id_comptable` PRIMARY KEY(`idc_id`),
+	KEY `idc_contact` (`idc_contact`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_imputations` (
+	`ipu_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`ipu_montant` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`ipu_reglement` INT(9) UNSIGNED NOT NULL,
+	`ipu_facture` INT(9) UNSIGNED NOT NULL,
+	`ipu_avoir` INT(9) UNSIGNED NOT NULL,
+	`ipu_profits` INT(9) UNSIGNED NOT NULL,
+	`ipu_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_imputations` PRIMARY KEY(`ipu_id`),
+	KEY `ipu_reglement` (`ipu_reglement`),
+	KEY `ipu_facture` (`ipu_facture`),
+	KEY `ipu_avoir` (`ipu_avoir`),
+	KEY `ipu_profits` (`ipu_profits`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_lignes_factures` (
+	`lif_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`lif_code` VARCHAR(30) NOT NULL DEFAULT '',
+	`lif_prix` DECIMAL(7,3) NOT NULL DEFAULT 0,
+	`lif_quantite` INT(5) UNSIGNED NOT NULL DEFAULT 0,
+	`lif_description` VARCHAR(400) NOT NULL DEFAULT '',
+	`lif_remise_taux` DECIMAL(4,2) NOT NULL DEFAULT 0,
+	`lif_remise_ht` DECIMAL(6,2) NOT NULL DEFAULT 0,
+	`lif_remise_ttc` DECIMAL(6,2) NOT NULL DEFAULT 0,
+	`lif_facture` INT(9) UNSIGNED NOT NULL,
+	`lif_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_lignes_factures` PRIMARY KEY(`lif_id`),
+	KEY `lif_facture` (`lif_facture`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_messages` (
+	`msg_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`msg_envoi` DATETIME NOT NULL,
+	`msg_lecture` DATETIME NOT NULL,
+	`msg_texte` VARCHAR(1000) NOT NULL DEFAULT '',
+	`msg_emetteur` INT(9) UNSIGNED NOT NULL,
+	`msg_destinataire` INT(9) UNSIGNED NOT NULL,
+	`msg_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_messages` PRIMARY KEY(`msg_id`),
+	KEY `msg_emetteur` (`msg_emetteur`),
+	KEY `msg_destinataire` (`msg_destinataire`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_modeles_documents` (
+	`mod_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`mod_nom` VARCHAR(60) NOT NULL DEFAULT '',
+	`mod_type` INT(9) UNSIGNED NOT NULL,
+	`mod_description` VARCHAR(400) NOT NULL DEFAULT '',
+	`mod_sujet` VARCHAR(100) NOT NULL DEFAULT '',
+	`mod_texte` VARCHAR(2048) NOT NULL DEFAULT '',
+	`mod_fichier` VARCHAR(100) NOT NULL DEFAULT '',
+	`mod_famille` INT(9) UNSIGNED NOT NULL,
+	`mod_disque` INT(9) UNSIGNED NOT NULL,
+	`mod_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_modeles_documents` PRIMARY KEY(`mod_id`),
+	KEY `mod_disque` (`mod_disque`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_objectifs` (
+	`obj_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`obj_critere` INT(9) UNSIGNED NOT NULL,
+	`obj_employe` INT(9) UNSIGNED NOT NULL,
+	`obj_date` DATE NOT NULL,
+	`obj_prevu` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`obj_realise` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`obj_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_objectifs` PRIMARY KEY(`obj_id`),
+	KEY `obj_employe` (`obj_employe`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_ordres_production` (
+	`opr_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`opr_code_article` VARCHAR(30) NOT NULL DEFAULT '',
+	`opr_code_prod` VARCHAR(5) NOT NULL DEFAULT '',
+	`opr_description` VARCHAR(200) NOT NULL DEFAULT '',
+	`opr_prix` DECIMAL(6,2) NOT NULL DEFAULT 0,
+	`opr_quantite` INT(5) UNSIGNED NOT NULL DEFAULT 0,
+	`opr_famille` INT(9) UNSIGNED NOT NULL,
+	`opr_commande` INT(9) UNSIGNED NOT NULL,
+	`opr_article_devis` INT(9) UNSIGNED NOT NULL,
+	`opr_data` VARCHAR(1000) NOT NULL DEFAULT '',
+	`opr_etat` INT(9) UNSIGNED NOT NULL,
+	`opr_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_ordres_production` PRIMARY KEY(`opr_id`),
+	KEY `opr_commande` (`opr_commande`),
+	KEY `opr_article_devis` (`opr_article_devis`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_plaintes` (
+	`pla_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`pla_date` DATE NOT NULL,
+	`pla_description` VARCHAR(400) NOT NULL DEFAULT '',
+	`pla_secteur` INT(9) UNSIGNED NOT NULL,
+	`pla_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_plaintes` PRIMARY KEY(`pla_id`),
+	KEY `pla_secteur` (`pla_secteur`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_profils` (
+	`prf_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`prf_nom` VARCHAR(30) NOT NULL DEFAULT '',
+	`prf_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_profils` PRIMARY KEY(`prf_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_profits_et_pertes` (
+	`pep_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`pep_date` DATE NOT NULL,
+	`pep_montant` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`pep_reglement` INT(9) UNSIGNED NOT NULL,
+	`pep_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_profits_et_pertes` PRIMARY KEY(`pep_id`),
+	KEY `pep_reglement` (`pep_reglement`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_promotions` (
+	`prm_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`prm_mois` VARCHAR(10) NOT NULL DEFAULT '',
+	`prm_info` VARCHAR(50) NOT NULL DEFAULT '',
+	CONSTRAINT `pk_t_promotions` PRIMARY KEY(`prm_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_reglements` (
+	`rgl_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`rgl_reference` VARCHAR(11) NOT NULL DEFAULT '',
+	`rgl_date` DATE NOT NULL,
+	`rgl_montant` DECIMAL(8,2) NOT NULL DEFAULT 0,
+	`rgl_type` INT(9) UNSIGNED NOT NULL,
+	`rgl_cheque` VARCHAR(30) NOT NULL DEFAULT '',
+	`rgl_banque` VARCHAR(80) NOT NULL DEFAULT '',
+	`rgl_client` INT(9) UNSIGNED NOT NULL,
+	`rgl_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_reglements` PRIMARY KEY(`rgl_id`),
+	KEY `rgl_client` (`rgl_client`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_secteurs` (
+	`sec_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`sec_nom` VARCHAR(100) NOT NULL DEFAULT '',
+	`sec_ville` INT(9) UNSIGNED NOT NULL,
+	`sec_type` INT(9) UNSIGNED NOT NULL,
+	`sec_hlm` INT(4) UNSIGNED NOT NULL DEFAULT 0,
+	`sec_hlm_stop` INT(4) UNSIGNED NOT NULL DEFAULT 0,
+	`sec_res` INT(4) UNSIGNED NOT NULL DEFAULT 0,
+	`sec_res_stop` INT(4) UNSIGNED NOT NULL DEFAULT 0,
+	`sec_pav` INT(4) UNSIGNED NOT NULL DEFAULT 0,
+	`sec_pav_stop` INT(4) UNSIGNED NOT NULL DEFAULT 0,
+	`sec_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_secteurs` PRIMARY KEY(`sec_id`),
+	KEY `sec_ville` (`sec_ville`)
+) ENGINE = MyISAM DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_societes_vendeuses` (
+	`scv_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`scv_nom` VARCHAR(100) NOT NULL DEFAULT '',
+	`scv_adresse` VARCHAR(400) NOT NULL DEFAULT '',
+	`scv_telephone` VARCHAR(10) NOT NULL DEFAULT '',
+	`scv_fax` VARCHAR(10) NOT NULL DEFAULT '',
+	`scv_email` VARCHAR(100) NOT NULL DEFAULT '',
+	`scv_capital` VARCHAR(20) NOT NULL DEFAULT '',
+	`scv_rcs` VARCHAR(30) NOT NULL DEFAULT '',
+	`scv_siret` VARCHAR(20) NOT NULL DEFAULT '',
+	`scv_taux_annuel` DECIMAL(4,2) NOT NULL DEFAULT 0,
+	`scv_taux_mensuel` DECIMAL(4,2) NOT NULL DEFAULT 0,
+	`scv_no_devis` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`scv_no_facture` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`scv_no_avoir` INT(9) UNSIGNED NOT NULL DEFAULT 0,
+	`scv_prefixe` VARCHAR(30) NOT NULL DEFAULT '',
+	`scv_suffixe` VARCHAR(30) NOT NULL DEFAULT '',
+	`scv_modele_devis` VARCHAR(30) NOT NULL DEFAULT '',
+	`scv_modele_facture` VARCHAR(30) NOT NULL DEFAULT '',
+	`scv_modele_avoir` VARCHAR(30) NOT NULL DEFAULT '',
+	`scv_en_production` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`scv_id_comptable` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	CONSTRAINT `pk_t_societes_vendeuses` PRIMARY KEY(`scv_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_taches` (
+	`tac_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`tac_emetteur` INT(9) UNSIGNED NOT NULL,
+	`tac_titre` VARCHAR(50) NOT NULL DEFAULT '',
+	`tac_description` VARCHAR(400) NOT NULL DEFAULT '',
+	`tac_info` VARCHAR(512) NOT NULL DEFAULT '',
+	`tac_debut_prevu` DATETIME NOT NULL,
+	`tac_fin_prevue` DATE NOT NULL,
+	`tac_debut_real` DATE NOT NULL,
+	`tac_fin_real` DATE NOT NULL,
+	`tac_travail_prevu` DECIMAL(5,1) NOT NULL DEFAULT 0,
+	`tac_travail_real` DECIMAL(5,1) NOT NULL DEFAULT 0,
+	`tac_employe` INT(9) UNSIGNED NOT NULL,
+	`tac_sous_traitant` INT(9) UNSIGNED NOT NULL,
+	`tac_type` INT(9) UNSIGNED NOT NULL,
+	`tac_etat` INT(9) UNSIGNED NOT NULL,
+	`tac_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_taches` PRIMARY KEY(`tac_id`),
+	KEY `tac_emetteur` (`tac_emetteur`),
+	KEY `tac_employe` (`tac_employe`),
+	KEY `tac_sous_traitant` (`tac_sous_traitant`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_taux_tva` (
+	`tva_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`tva_taux` DECIMAL(6,4) NOT NULL DEFAULT 0,
+	`tva_date` DATE NOT NULL,
+	`tva_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_taux_tva` PRIMARY KEY(`tva_id`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_utilisateurs` (
+	`utl_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`utl_login` VARCHAR(20) NOT NULL DEFAULT '',
+	`utl_mot_de_passe` VARCHAR(100) NOT NULL DEFAULT '',
+	`sys_salt` VARCHAR(6) NOT NULL DEFAULT '',
+	`utl_type` INT(9) UNSIGNED NOT NULL,
+	`utl_employe` INT(9) UNSIGNED NOT NULL,
+	`utl_sous_traitant` INT(9) UNSIGNED NOT NULL,
+	`utl_profil` INT(9) UNSIGNED NOT NULL,
+	`utl_derniere_connexion` DATETIME NOT NULL,
+	`utl_date_fin` DATE NOT NULL,
+	`utl_actif` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`utl_en_production` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`utl_duree_alerte` INT(2) UNSIGNED NOT NULL DEFAULT 0,
+	`utl_son_alerte` INT(9) UNSIGNED NOT NULL,
+	`utl_affichage_alerte` INT(1) UNSIGNED NOT NULL DEFAULT 0,
+	`utl_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_utilisateurs` PRIMARY KEY(`utl_id`),
+	KEY `utl_employe` (`utl_employe`),
+	KEY `utl_sous_traitant` (`utl_sous_traitant`),
+	KEY `utl_profil` (`utl_profil`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_villes` (
+	`vil_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vil_nom` VARCHAR(100) NOT NULL DEFAULT '',
+	`vil_cp` VARCHAR(5) NOT NULL DEFAULT '',
+	`vil_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_villes` PRIMARY KEY(`vil_id`)
+) ENGINE = MyISAM DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `t_vues` (
+	`vue_id` INT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`vue_nom` VARCHAR(50) NOT NULL DEFAULT '',
+	`vue_controleur` VARCHAR(50) NOT NULL DEFAULT '',
+	`vue_proprietaire` INT(9) UNSIGNED NOT NULL,
+	`vue_data` VARCHAR(10000) NOT NULL DEFAULT '',
+	`vue_inactif` DATETIME NULL,
+	CONSTRAINT `pk_t_vues` PRIMARY KEY(`vue_id`),
+	KEY `vue_proprietaire` (`vue_proprietaire`)
+) DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+INSERT INTO `v_actions` (`vat_id`, `vat_action`) VALUES (1, 'Création');
+INSERT INTO `v_actions` (`vat_id`, `vat_action`) VALUES (2, 'Mise à jour');
+INSERT INTO `v_actions` (`vat_id`, `vat_action`) VALUES (3, 'Suppression logique');
+INSERT INTO `v_actions` (`vat_id`, `vat_action`) VALUES (4, 'Suppression physique');
+INSERT INTO `v_activites` (`vac_activite`) VALUES ('Mairie');
+INSERT INTO `v_activites` (`vac_activite`) VALUES ('Activité 2');
+INSERT INTO `v_activites` (`vac_activite`) VALUES ('Activité 3');
+INSERT INTO `v_chaleur` (`vch_id`, `vch_degre`) VALUES (1, '1 (froid)');
+INSERT INTO `v_chaleur` (`vch_id`, `vch_degre`) VALUES (2, '2');
+INSERT INTO `v_chaleur` (`vch_id`, `vch_degre`) VALUES (3, '3');
+INSERT INTO `v_chaleur` (`vch_id`, `vch_degre`) VALUES (4, '4');
+INSERT INTO `v_chaleur` (`vch_id`, `vch_degre`) VALUES (5, '5 (chaud)');
+INSERT INTO `v_chaleur` (`vch_id`, `vch_degre`) VALUES (9, 'Inconnu');
+INSERT INTO `v_civilites` (`vcv_civilite`) VALUES ('Monsieur');
+INSERT INTO `v_civilites` (`vcv_civilite`) VALUES ('Madame');
+INSERT INTO `v_civilites` (`vcv_civilite`) VALUES ('Mademoiselle');
+INSERT INTO `v_clients_prospects` (`vcp_id`, `vcp_type`) VALUES (0, 'contact');
+INSERT INTO `v_clients_prospects` (`vcp_id`, `vcp_type`) VALUES (1, 'prospect');
+INSERT INTO `v_clients_prospects` (`vcp_id`, `vcp_type`) VALUES (2, 'client');
+INSERT INTO `v_criteres` (`vcr_critere`) VALUES ('Critère 1');
+INSERT INTO `v_criteres` (`vcr_critere`) VALUES ('Critère 2');
+INSERT INTO `v_criteres` (`vcr_critere`) VALUES ('Critère 3');
+INSERT INTO `v_etats_alertes` (`vea_id`, `vea_etat`) VALUES (1, 'Nouvelle');
+INSERT INTO `v_etats_alertes` (`vea_id`, `vea_etat`) VALUES (2, 'Vue');
+INSERT INTO `v_etats_alertes` (`vea_id`, `vea_etat`) VALUES (3, 'Acquittée');
+INSERT INTO `v_etats_avoirs` (`vev_id`, `vev_etat`) VALUES (1, 'Non validé');
+INSERT INTO `v_etats_avoirs` (`vev_id`, `vev_etat`) VALUES (2, 'Validé');
+INSERT INTO `v_etats_avoirs` (`vev_id`, `vev_etat`) VALUES (3, 'Utilisé partiellement');
+INSERT INTO `v_etats_avoirs` (`vev_id`, `vev_etat`) VALUES (4, 'Utilisé');
+INSERT INTO `v_etats_commandes` (`vec_id`, `vec_etat`) VALUES (1, 'Non lancée');
+INSERT INTO `v_etats_commandes` (`vec_id`, `vec_etat`) VALUES (2, 'Lancée');
+INSERT INTO `v_etats_commandes` (`vec_id`, `vec_etat`) VALUES (3, 'En cours');
+INSERT INTO `v_etats_commandes` (`vec_id`, `vec_etat`) VALUES (4, 'Terminée');
+INSERT INTO `v_etats_commandes` (`vec_id`, `vec_etat`) VALUES (5, 'Annulée');
+INSERT INTO `v_etats_devis` (`ved_id`, `ved_etat`) VALUES (1, 'Brouillon');
+INSERT INTO `v_etats_devis` (`ved_id`, `ved_etat`) VALUES (2, 'Validé');
+INSERT INTO `v_etats_devis` (`ved_id`, `ved_etat`) VALUES (3, 'Transmis');
+INSERT INTO `v_etats_devis` (`ved_id`, `ved_etat`) VALUES (4, 'Accepté');
+INSERT INTO `v_etats_devis` (`ved_id`, `ved_etat`) VALUES (5, 'Refusé');
+INSERT INTO `v_etats_devis` (`ved_id`, `ved_etat`) VALUES (6, 'Projet abandonné');
+INSERT INTO `v_etats_devis` (`ved_id`, `ved_etat`) VALUES (7, 'Projet repoussé');
+INSERT INTO `v_etats_devis` (`ved_id`, `ved_etat`) VALUES (8, 'Passé par concurrence');
+INSERT INTO `v_etats_devis` (`ved_id`, `ved_etat`) VALUES (9, 'En cours de signature');
+INSERT INTO `v_etats_employes` (`vee_id`, `vee_etat`) VALUES (1, 'Actif');
+INSERT INTO `v_etats_employes` (`vee_id`, `vee_etat`) VALUES (2, 'Inactif');
+INSERT INTO `v_etats_factures` (`vef_id`, `vef_etat`) VALUES (1, 'Non validée');
+INSERT INTO `v_etats_factures` (`vef_id`, `vef_etat`) VALUES (2, 'Validée');
+INSERT INTO `v_etats_factures` (`vef_id`, `vef_etat`) VALUES (9, 'Transférée en avoir');
+INSERT INTO `v_etats_ordres_production` (`veot_id`, `veo_etat`) VALUES (1, 'Lancée');
+INSERT INTO `v_etats_ordres_production` (`veot_id`, `veo_etat`) VALUES (2, 'Affectée');
+INSERT INTO `v_etats_ordres_production` (`veot_id`, `veo_etat`) VALUES (3, 'Démarrée');
+INSERT INTO `v_etats_ordres_production` (`veot_id`, `veo_etat`) VALUES (4, 'Terminée');
+INSERT INTO `v_etats_ordres_production` (`veot_id`, `veo_etat`) VALUES (5, 'Annulée');
+INSERT INTO `v_etats_taches` (`vet_id`, `vet_etat`) VALUES (1, 'Initiale');
+INSERT INTO `v_etats_taches` (`vet_id`, `vet_etat`) VALUES (2, 'Terminée');
+INSERT INTO `v_etats_taches` (`vet_id`, `vet_etat`) VALUES (3, 'Annulée');
+INSERT INTO `v_etats_taches` (`vet_id`, `vet_etat`) VALUES (4, 'Alertée (rappel)');
+INSERT INTO `v_familles` (`vfm_famille`, `vfm_nom`, `vfm_code`, `vfm_production`) VALUES ('Générique', 'generique', 'G', 0);
+INSERT INTO `v_familles` (`vfm_famille`, `vfm_nom`, `vfm_code`, `vfm_production`) VALUES ('Remises', 'remises', 'R', 0);
+INSERT INTO `v_familles` (`vfm_famille`, `vfm_nom`, `vfm_code`, `vfm_production`) VALUES ('Distribution de prospectus', 'distribution', 'D', 1);
+INSERT INTO `v_familles` (`vfm_famille`, `vfm_nom`, `vfm_code`, `vfm_production`) VALUES ('Emailing', 'emailing', 'E', 1);
+INSERT INTO `v_familles` (`vfm_famille`, `vfm_nom`, `vfm_code`, `vfm_production`) VALUES ('Impressions', 'impression', 'I', 1);
+INSERT INTO `v_familles` (`vfm_famille`, `vfm_nom`, `vfm_code`, `vfm_production`) VALUES ('Maquettes', 'maquettes', 'M', 1);
+INSERT INTO `v_familles` (`vfm_famille`, `vfm_nom`, `vfm_code`, `vfm_production`) VALUES ('Plan marketing', 'plan_marketing', 'P', 0);
+INSERT INTO `v_familles` (`vfm_famille`, `vfm_nom`, `vfm_code`, `vfm_production`) VALUES ('Vigiks', 'vigiks', 'V', 0);
+INSERT INTO `v_familles_modeles_documents` (`vfd_id`, `vfd_famille_modele`) VALUES (1, 'Employé');
+INSERT INTO `v_familles_modeles_documents` (`vfd_id`, `vfd_famille_modele`) VALUES (2, 'Contact');
+INSERT INTO `v_familles_modeles_documents` (`vfd_id`, `vfd_famille_modele`) VALUES (3, 'Relances paiement');
+INSERT INTO `v_familles_modeles_documents` (`vfd_id`, `vfd_famille_modele`) VALUES (4, 'Relances devis');
+INSERT INTO `v_familles_modeles_documents` (`vfd_id`, `vfd_famille_modele`) VALUES (5, 'Devis');
+INSERT INTO `v_familles_modeles_documents` (`vfd_id`, `vfd_famille_modele`) VALUES (6, 'Facture');
+INSERT INTO `v_fonctions` (`vfo_id`, `vfo_fonction`) VALUES (1, 'Commercial');
+INSERT INTO `v_fonctions` (`vfo_id`, `vfo_fonction`) VALUES (2, 'Autre');
+INSERT INTO `v_natures` (`vnt_id`, `vnt_evenement`) VALUES (1, 'Appel reçu');
+INSERT INTO `v_natures` (`vnt_id`, `vnt_evenement`) VALUES (2, 'Appel émis');
+INSERT INTO `v_natures` (`vnt_id`, `vnt_evenement`) VALUES (3, 'Email reçu');
+INSERT INTO `v_natures` (`vnt_id`, `vnt_evenement`) VALUES (4, 'Email émis');
+INSERT INTO `v_natures` (`vnt_id`, `vnt_evenement`) VALUES (5, 'Courrier reçu');
+INSERT INTO `v_natures` (`vnt_id`, `vnt_evenement`) VALUES (6, 'Courrier émis');
+INSERT INTO `v_natures` (`vnt_id`, `vnt_evenement`) VALUES (7, 'Visite');
+INSERT INTO `v_referes` (`vrf_label`) VALUES ('Injonction de payer');
+INSERT INTO `v_referes` (`vrf_label`) VALUES ('Opposition à injonction');
+INSERT INTO `v_referes` (`vrf_label`) VALUES ('Huissier');
+INSERT INTO `v_referes` (`vrf_label`) VALUES ('Référé');
+INSERT INTO `v_referes` (`vrf_label`) VALUES ('Opposition à référé');
+INSERT INTO `v_sons` (`vso_son`) VALUES ('Son 1');
+INSERT INTO `v_sons` (`vso_son`) VALUES ('Son 2');
+INSERT INTO `v_sons` (`vso_son`) VALUES ('Son 3');
+INSERT INTO `v_types_adresses` (`vtad_type`) VALUES ('Adresse sensible');
+INSERT INTO `v_types_adresses` (`vtad_type`) VALUES ('Boîte pleine');
+INSERT INTO `v_types_alertes` (`vtal_id`, `vtal_type`) VALUES (1, 'Relance paiement');
+INSERT INTO `v_types_alertes` (`vtal_id`, `vtal_type`) VALUES (2, 'Relance devis');
+INSERT INTO `v_types_alertes` (`vtal_id`, `vtal_type`) VALUES (3, 'Rendez-vous');
+INSERT INTO `v_types_alertes` (`vtal_id`, `vtal_type`) VALUES (4, 'Tâche');
+INSERT INTO `v_types_avoirs` (`vta_id`, `vta_type`) VALUES (1, 'Trop perçu');
+INSERT INTO `v_types_avoirs` (`vta_id`, `vta_type`) VALUES (2, 'Retour produit');
+INSERT INTO `v_types_avoirs` (`vta_id`, `vta_type`) VALUES (3, 'Compensation');
+INSERT INTO `v_types_distributions` (`vtdi_type`) VALUES ('Non défini !');
+INSERT INTO `v_types_documents` (`vtd_type`) VALUES ('Type A');
+INSERT INTO `v_types_documents` (`vtd_type`) VALUES ('Type B');
+INSERT INTO `v_types_documents` (`vtd_type`) VALUES ('Type C');
+INSERT INTO `v_types_droits` (`vto_type`) VALUES ('Type de droit d\'utilisation A');
+INSERT INTO `v_types_droits` (`vto_type`) VALUES ('Type de droit d\'utilisation B');
+INSERT INTO `v_types_droits` (`vto_type`) VALUES ('Type de droit d\'utilisation C');
+INSERT INTO `v_types_droits` (`vto_type`) VALUES ('Type de droit d\'utilisation D');
+INSERT INTO `v_types_factures` (`vtf_type`) VALUES ('Doit');
+INSERT INTO `v_types_factures` (`vtf_type`) VALUES ('Acompte');
+INSERT INTO `v_types_modeles_documents` (`vtm_id`, `vtm_type_modele`) VALUES (1, 'Document word');
+INSERT INTO `v_types_modeles_documents` (`vtm_id`, `vtm_type_modele`) VALUES (2, 'Message');
+INSERT INTO `v_types_reglements` (`vtr_type`) VALUES ('Chèque');
+INSERT INTO `v_types_reglements` (`vtr_type`) VALUES ('Espèces');
+INSERT INTO `v_types_reglements` (`vtr_type`) VALUES ('Virement');
+INSERT INTO `v_types_reglements` (`vtr_type`) VALUES ('Avoir');
+INSERT INTO `v_types_reglements` (`vtr_type`) VALUES ('Pertes et profits');
+INSERT INTO `v_types_secteurs` (`vts_type`) VALUES ('Urbain 1');
+INSERT INTO `v_types_secteurs` (`vts_type`) VALUES ('Urbain 2');
+INSERT INTO `v_types_secteurs` (`vts_type`) VALUES ('Suburbain 1');
+INSERT INTO `v_types_secteurs` (`vts_type`) VALUES ('Suburbain 2');
+INSERT INTO `v_types_secteurs` (`vts_type`) VALUES ('Suburbain 3');
+INSERT INTO `v_types_secteurs` (`vts_type`) VALUES ('Rural 1');
+INSERT INTO `v_types_secteurs` (`vts_type`) VALUES ('Rural 2');
+INSERT INTO `v_types_secteurs` (`vts_type`) VALUES ('Rural 3');
+INSERT INTO `v_types_taches` (`vtt_id`, `vtt_type`, `vtt_code`) VALUES (1, 'Envoi d\'email', 'EMAIL1');
+INSERT INTO `v_types_taches` (`vtt_id`, `vtt_type`, `vtt_code`) VALUES (2, 'Etablissement de devis', 'DEVIS');
+INSERT INTO `v_types_taches` (`vtt_id`, `vtt_type`, `vtt_code`) VALUES (3, 'Autre', 'AUTRE');
+INSERT INTO `v_types_taches` (`vtt_id`, `vtt_type`, `vtt_code`) VALUES (9, 'Rappel', 'RAPPEL');
+INSERT INTO `v_types_utilisateurs` (`vtu_id`, `vtu_type`) VALUES (1, 'Employé');
+INSERT INTO `v_types_utilisateurs` (`vtu_id`, `vtu_type`) VALUES (2, 'Sous-traitant');
+INSERT INTO `v_visibilites` (`vvi_id`, `vvi_visibilite`) VALUES (0, 'privée');
+INSERT INTO `v_visibilites` (`vvi_id`, `vvi_visibilite`) VALUES (1, 'publique');
+CREATE TABLE IF NOT EXISTS `t_purchases` (
+  `purchase_id` bigint(20) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `delivery` varchar(100) NOT NULL,
+  `date_limit` date NOT NULL,
+  `sponsor` varchar(100) NOT NULL,
+  `person` varchar(100) NOT NULL,
+  `beneficiary` varchar(100) NOT NULL,
+  `inactive` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+;
+
+ALTER TABLE `t_purchases`
+  ADD PRIMARY KEY (`purchase_id`);
+;
+
+ALTER TABLE `t_purchases`
+  MODIFY `purchase_id` bigint(20) NOT NULL AUTO_INCREMENT;
+;
+--
+-- Numéroteur de devis
+--
+CREATE TRIGGER numeroteur_devis BEFORE INSERT ON t_devis
+FOR EACH ROW BEGIN
+    IF NEW.dvi_numero = 0 THEN
+        SET @numero = (SELECT scv_no_devis FROM t_societes_vendeuses WHERE scv_id=NEW.dvi_societe_vendeuse);
+        SET NEW.dvi_numero = @numero+1;
+        UPDATE t_societes_vendeuses SET scv_no_devis=NEW.dvi_numero WHERE scv_id=NEW.dvi_societe_vendeuse;
+        SET NEW.dvi_reference = CONCAT('DE',LPAD(NEW.dvi_numero,5,'0'));
+    END IF;
+END;
+;
+
+--
+-- Numéroteur de commande
+--
+CREATE TRIGGER numeroteur_commande BEFORE INSERT ON t_commandes
+FOR EACH ROW BEGIN
+    IF NEW.cmd_numero = 0 THEN
+        SET @numero = (SELECT IFNULL(MAX(cmd_numero),0) FROM t_commandes);
+        SET @enseigne = (SELECT dvi_societe_vendeuse FROM t_devis WHERE dvi_id=NEW.cmd_devis);
+        SET NEW.cmd_numero = @numero+1;
+        SET NEW.cmd_reference = CONCAT('CM',LPAD(NEW.cmd_numero,5,'0'));
+    END IF;
+END;
+;
+
+--
+-- Numéroteur de facture
+--
+CREATE TRIGGER numeroteur_facture BEFORE INSERT ON t_factures
+FOR EACH ROW BEGIN
+    IF NEW.fac_numero = 0 THEN
+        SET @devis = (SELECT cmd_devis FROM t_commandes WHERE cmd_id=NEW.fac_commande);
+        SET @enseigne = (SELECT dvi_societe_vendeuse FROM t_devis WHERE dvi_id=@devis);
+        SELECT scv_no_facture,scv_prefixe,scv_suffixe INTO @numero,@prefixe,@suffixe FROM t_societes_vendeuses WHERE scv_id=@enseigne;
+        SET NEW.fac_numero = @numero+1;
+        UPDATE t_societes_vendeuses SET scv_no_facture=NEW.fac_numero WHERE scv_id=@enseigne;
+        SET NEW.fac_reference = CONCAT(@prefixe,LPAD(NEW.fac_numero,5,'0'),@suffixe);
+    END IF;
+END;
+;
+
+--
+-- Numéroteur d'avoir
+--
+CREATE TRIGGER numeroteur_avoir BEFORE INSERT ON t_avoirs
+FOR EACH ROW BEGIN
+    SET @commande = (SELECT fac_commande FROM t_factures WHERE fac_id=NEW.avr_facture);
+    SET @devis = (SELECT cmd_devis FROM t_commandes WHERE cmd_id=@commande);
+    SET @enseigne = (SELECT dvi_societe_vendeuse FROM t_devis WHERE dvi_id=@devis);
+    SET @numero = (SELECT scv_no_avoir FROM t_societes_vendeuses WHERE scv_id=@enseigne);
+    SET NEW.avr_numero = @numero+1;
+    UPDATE t_societes_vendeuses SET scv_no_avoir=NEW.avr_numero WHERE scv_id=@enseigne;
+    SET NEW.avr_reference = CONCAT('AV',LPAD(NEW.avr_numero,5,'0'));
+END;
+;

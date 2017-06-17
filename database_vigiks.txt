@@ -1,0 +1,402 @@
+--
+-- Table structure for table `t_vigik`
+--
+
+CREATE TABLE IF NOT EXISTS `t_vigik` (
+`vigik_id` int(11) unsigned NOT NULL,
+  `vigik_numero` varchar(25) NOT NULL,
+  `borne` varchar(50) NOT NULL,
+  `societe` varchar(100) NOT NULL,
+  `type` varchar(25) NOT NULL,
+  `client` varchar(11) NOT NULL,
+  `facture` varchar(11) NOT NULL,
+  `devis` varchar(11) NOT NULL,
+  `etat` varchar(25) NOT NULL,
+  `cl_adresse` varchar(11) NOT NULL,
+  `tournee` varchar(100) NOT NULL,
+  `ouvertures` varchar(25) NOT NULL,
+  `chargements` varchar(25) NOT NULL,
+  `vigik_inactif` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_vigik`
+--
+
+INSERT INTO `t_vigik` (`vigik_id`, `vigik_numero`, `borne`, `societe`, `type`, `client`, `facture`, `devis`, `etat`, `cl_adresse`, `tournee`, `ouvertures`, `chargements`, `vigik_inactif`) VALUES
+(1, '05771F4B', '', '', '', '', '', '', '', '', '', '9', '4', NULL),
+(2, '05772C1B', '', '', '', '', '', '', '', '', '', '21', '7', NULL),
+(3, '05773C4B', '', '', '', '', '', '', '', '', '', '156', '7', NULL),
+(4, '0577550B', '', '', '', '', '', '', '', '', '', '27', '7', NULL),
+(5, '0577CE1B', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(6, '0577F4CB', '', '', '', '', '', '', '', '', '', '44', '7', NULL),
+(7, '0578392B', '', '', '', '', '', '', '', '', '', '6', '1', NULL),
+(8, '05789B8B', '', '', '', '', '', '', '', '', '', '0', '6', NULL),
+(9, '0578BB6B', '', '', '', '', '', '', '', '', '', '40', '11', NULL),
+(10, '0578C49B', '', '', '', '', '', '', '', '', '', '11', '9', NULL),
+(11, '0578F9AB', '', '', '', '', '', '', '', '', '', '6', '11', NULL),
+(12, '057905EB', '', '', '', '', '', '', '', '', '', '8', '7', NULL),
+(13, '0579853B', '', '', '', '', '', '', '', '', '', '162', '8', NULL),
+(14, '057A42CB', '', '', '', '', '', '', '', '', '', '25', '10', NULL),
+(15, '057AF09B', '', '', '', '', '', '', '', '', '', '0', '7', NULL),
+(16, '057AF61B', '', '', '', '', '', '', '', '', '', '3', '8', NULL),
+(17, '057B0EBB', '', '', '', '', '', '', '', '', '', '171', '7', NULL),
+(18, '057B3D6B', '', '', '', '', '', '', '', '', '', '172', '7', NULL),
+(19, '057B625B', '', '', '', '', '', '', '', '', '', '90', '7', NULL),
+(20, '057B661B', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(21, '057B784B', '', '', '', '', '', '', '', '', '', '67', '7', NULL),
+(22, '057C4A5B', '', '', '', '', '', '', '', '', '', '127', '7', NULL),
+(23, '057C5B6B', '', '', '', '', '', '', '', '', '', '0', '7', NULL),
+(24, '057CEBDB', '', '', '', '', '', '', '', '', '', '15', '1', NULL),
+(25, '057D138B', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(26, '057D149B', '', '', '', '', '', '', '', '', '', '12', '4', NULL),
+(27, '057D6B8B', '', '', '', '', '', '', '', '', '', '36', '10', NULL),
+(28, '057D734B', '', '', '', '', '', '', '', '', '', '78', '8', NULL),
+(29, '057D76DB', '', '', '', '', '', '', '', '', '', '57', '8', NULL),
+(30, '057D92DB', '', '', '', '', '', '', '', '', '', '45', '4', NULL),
+(31, '057DC9FB', '', '', '', '', '', '', '', '', '', '31', '7', NULL),
+(32, '057DCE8B', '', '', '', '', '', '', '', '', '', '66', '6', NULL),
+(33, '2E6AB1BB', '', '', '', '', '', '', '', '', '', '2', '3', NULL),
+(34, '2E6B1A5B', '', '', '', '', '', '', '', '', '', '11', '7', NULL),
+(35, '2E6B1EFB', '', '', '', '', '', '', '', '', '', '30', '6', NULL),
+(36, '2E6B305B', '', '', '', '', '', '', '', '', '', '9', '8', NULL),
+(37, '2E6BCBFB', '', '', '', '', '', '', '', '', '', '19', '4', NULL),
+(38, '2E6BEF4B', '', '', '', '', '', '', '', '', '', '152', '6', NULL),
+(39, '2E6C86BB', '', '', '', '', '', '', '', '', '', '69', '7', NULL),
+(40, '2E6CF8AB', '', '', '', '', '', '', '', '', '', '127', '7', NULL),
+(41, '2E6D99BB', '', '', '', '', '', '', '', '', '', '17', '7', NULL),
+(42, '2E6E01BB', '', '', '', '', '', '', '', '', '', '29', '7', NULL),
+(43, '2E6E2A1B', '', '', '', '', '', '', '', '', '', '29', '8', NULL),
+(44, '2E6E336B', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(45, '2E6E99BB', '', '', '', '', '', '', '', '', '', '25', '6', NULL),
+(46, '2E6F06DB', '', '', '', '', '', '', '', '', '', '88', '4', NULL),
+(47, '2E6F518B', '', '', '', '', '', '', '', '', '', '24', '7', NULL),
+(48, '2E6FB2FB', '', '', '', '', '', '', '', '', '', '1', '7', NULL),
+(49, '2E70F33B', '', '', '', '', '', '', '', '', '', '32', '11', NULL),
+(50, '2E72159B', '', '', '', '', '', '', '', '', '', '18', '7', NULL),
+(51, '2E7254EB', '', '', '', '', '', '', '', '', '', '5', '7', NULL),
+(52, '2E72A07B', '', '', '', '', '', '', '', '', '', '0', '11', NULL),
+(53, '2E72DFAB', '', '', '', '', '', '', '', '', '', '105', '4', NULL),
+(54, '2E730D6B', '', '', '', '', '', '', '', '', '', '1', '5', NULL),
+(55, '2E73FA6B', '', '', '', '', '', '', '', '', '', '0', '7', NULL),
+(56, '2E74121B', '', '', '', '', '', '', '', '', '', '0', '2', NULL),
+(57, '2E75A8AB', '', '', '', '', '', '', '', '', '', '0', '1', NULL),
+(58, '2E75C23B', '', '', '', '', '', '', '', '', '', '17', '7', NULL),
+(59, '2E7646DB', '', '', '', '', '', '', '', '', '', '131', '6', NULL),
+(60, '2E76FFEB', '', '', '', '', '', '', '', '', '', '57', '5', NULL),
+(61, '2E7736BB', '', '', '', '', '', '', '', '', '', '5', '5', NULL),
+(62, '2E773BBB', '', '', '', '', '', '', '', '', '', '1', '3', NULL),
+(63, '2E7899EB', '', '', '', '', '', '', '', '', '', '15', '6', NULL),
+(64, '2E78C2DB', '', '', '', '', '', '', '', '', '', '59', '7', NULL),
+(65, '2E799C9B', '', '', '', '', '', '', '', '', '', '41', '7', NULL),
+(66, '2EBC331B', '', '', '', '', '', '', '', '', '', '2', '7', NULL),
+(67, '2EC0121B', '', '', '', '', '', '', '', '', '', '84', '2', NULL),
+(68, '2EC1805B', '', '', '', '', '', '', '', '', '', '1', '4', NULL),
+(69, '2EC2415B', '', '', '', '', '', '', '', '', '', '1', '9', NULL),
+(70, '2EC2DE5B', '', '', '', '', '', '', '', '', '', '70', '8', NULL),
+(71, '2EC4231B', '', '', '', '', '', '', '', '', '', '28', '7', NULL),
+(72, '2EC6EB3B', '', '', '', '', '', '', '', '', '', '7', '3', NULL),
+(73, '2EC7AB8B', '', '', '', '', '', '', '', '', '', '12', '3', NULL),
+(74, '2EC8897B', '', '', '', '', '', '', '', '', '', '7', '6', NULL),
+(75, '2EC8A0DB', '', '', '', '', '', '', '', '', '', '25', '6', NULL),
+(76, 'A7787790', '', '', '', '', '', '', '', '', '', '74', '9', NULL),
+(77, 'A7788B90', '', '', '', '', '', '', '', '', '', '3', '3', NULL),
+(78, 'A778B300', '', '', '', '', '', '', '', '', '', '33', '5', NULL),
+(79, 'A778B310', '', '', '', '', '', '', '', '', '', '152', '8', NULL),
+(80, 'A778C7E0', '', '', '', '', '', '', '', '', '', '59', '15', NULL),
+(81, 'A778C7F0', '', '', '', '', '', '', '', '', '', '181', '7', NULL),
+(82, 'A778CE00', '', '', '', '', '', '', '', '', '', '0', '3', NULL),
+(83, 'A7792F50', '', '', '', '', '', '', '', '', '', '0', '2', NULL),
+(84, 'A7792F60', '', '', '', '', '', '', '', '', '', '8', '3', NULL),
+(85, 'A7792FB0', '', '', '', '', '', '', '', '', '', '0', '7', NULL),
+(86, 'A779CBE0', '', '', '', '', '', '', '', '', '', '80', '7', NULL),
+(87, 'A779DFB0', '', '', '', '', '', '', '', '', '', '65', '9', NULL),
+(88, 'A779F3D0', '', '', '', '', '', '', '', '', '', '16', '5', NULL),
+(89, 'A77A1B50', '', '', '', '', '', '', '', '', '', '150', '6', NULL),
+(90, 'A77A1B70', '', '', '', '', '', '', '', '', '', '80', '5', NULL),
+(91, 'A77A3070', '', '', '', '', '', '', '', '', '', '0', '6', NULL),
+(92, 'CAF5CE0A', '', '', '', '', '', '', '', '', '', '142', '7', NULL),
+(93, 'CAF5E13A', '', '', '', '', '', '', '', '', '', '239', '7', NULL),
+(94, 'CAF5E14A', '', '', '', '', '', '', '', '', '', '1', '4', NULL),
+(95, 'CAF5F59A', '', '', '', '', '', '', '', '', '', '13', '5', NULL),
+(96, 'CAF6097A', '', '', '', '', '', '', '', '', '', '78', '7', NULL),
+(97, 'CAF6099A', '', '', '', '', '', '', '', '', '', '36', '5', NULL),
+(98, 'CAF84CAA', '', '', '', '', '', '', '', '', '', '0', '7', NULL),
+(99, 'CAF84CBA', '', '', '', '', '', '', '', '', '', '19', '8', NULL),
+(100, 'CAF8607A', '', '', '', '', '', '', '', '', '', '101', '9', NULL),
+(101, '0577F6FB', '', '', '', '', '', '', '', '', '', '62', '7', NULL),
+(102, '0579A05B', '', '', '', '', '', '', '', '', '', '145', '7', NULL),
+(103, '057A05FB', '', '', '', '', '', '', '', '', '', '54', '7', NULL),
+(104, '057A659B', '', '', '', '', '', '', '', '', '', '10', '2', NULL),
+(105, '057B5BFB', '', '', '', '', '', '', '', '', '', '112', '7', NULL),
+(106, '057B70CB', '', '', '', '', '', '', '', '', '', '90', '7', NULL),
+(107, '057C609B', '', '', '', '', '', '', '', '', '', '46', '7', NULL),
+(108, '057C9DBB', '', '', '', '', '', '', '', '', '', '0', '5', NULL),
+(109, '057CB9FB', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(110, '057DA74B', '', '', '', '', '', '', '', '', '', '0', '5', NULL),
+(111, '057DFD7B', '', '', '', '', '', '', '', '', '', '79', '6', NULL),
+(112, '057E765B', '', '', '', '', '', '', '', '', '', '0', '1', NULL),
+(113, '057EA30B', '', '', '', '', '', '', '', '', '', '64', '9', NULL),
+(114, '0BD7A3AB', '', '', '', '', '', '', '', '', '', '7', '5', NULL),
+(115, '0BDA933B', '', '', '', '', '', '', '', '', '', '12', '6', NULL),
+(116, '2E6AC29B', '', '', '', '', '', '', '', '', '', '11', '7', NULL),
+(117, '2E6B012B', '', '', '', '', '', '', '', '', '', '76', '6', NULL),
+(118, '2E6B18EB', '', '', '', '', '', '', '', '', '', '25', '4', NULL),
+(119, '2E6C499B', '', '', '', '', '', '', '', '', '', '0', '5', NULL),
+(120, '2E6C95FB', '', '', '', '', '', '', '', '', '', '20', '6', NULL),
+(121, '2E6CB5CB', '', '', '', '', '', '', '', '', '', '65', '7', NULL),
+(122, '2E6D1D7B', '', '', '', '', '', '', '', '', '', '10', '8', NULL),
+(123, '2E6DDCCB', '', '', '', '', '', '', '', '', '', '9', '8', NULL),
+(124, '2E6E292B', '', '', '', '', '', '', '', '', '', '34', '5', NULL),
+(125, '2E6EAC9B', '', '', '', '', '', '', '', '', '', '68', '7', NULL),
+(126, '2E6F34BB', '', '', '', '', '', '', '', '', '', '0', '7', NULL),
+(127, '2E714C1B', '', '', '', '', '', '', '', '', '', '60', '6', NULL),
+(128, '2E71906B', '', '', '', '', '', '', '', '', '', '23', '8', NULL),
+(129, '2E71D9EB', '', '', '', '', '', '', '', '', '', '81', '6', NULL),
+(130, '2E71EDEB', '', '', '', '', '', '', '', '', '', '29', '8', NULL),
+(131, '2E721F3B', '', '', '', '', '', '', '', '', '', '0', '6', NULL),
+(132, '2E728DDB', '', '', '', '', '', '', '', '', '', '0', '2', NULL),
+(133, '2E72B40B', '', '', '', '', '', '', '', '', '', '26', '7', NULL),
+(134, '2E73BF2B', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(135, '2E74007B', '', '', '', '', '', '', '', '', '', '1', '1', NULL),
+(136, '2E750ADB', '', '', '', '', '', '', '', '', '', '54', '7', NULL),
+(137, '2E7606DB', '', '', '', '', '', '', '', '', '', '1', '4', NULL),
+(138, '2E76437B', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(139, '2E76544B', '', '', '', '', '', '', '', '', '', '3', '6', NULL),
+(140, '2E76622B', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(141, '2E76650B', '', '', '', '', '', '', '', '', '', '24', '7', NULL),
+(142, '2E77557B', '', '', '', '', '', '', '', '', '', '62', '6', NULL),
+(143, '2E77951B', '', '', '', '', '', '', '', '', '', '12', '6', NULL),
+(144, '2E77D2AB', '', '', '', '', '', '', '', '', '', '91', '10', NULL),
+(145, '2E78157B', '', '', '', '', '', '', '', '', '', '10', '8', NULL),
+(146, '2E78158B', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(147, '2E792F5B', '', '', '', '', '', '', '', '', '', '41', '4', NULL),
+(148, '2EBB2E9B', '', '', '', '', '', '', '', '', '', '53', '4', NULL),
+(149, '2EBB700B', '', '', '', '', '', '', '', '', '', '6', '8', NULL),
+(150, '2EBC053B', '', '', '', '', '', '', '', '', '', '52', '8', NULL),
+(151, '2EC1407B', '', '', '', '', '', '', '', '', '', '69', '7', NULL),
+(152, '2EC1B1BB', '', '', '', '', '', '', '', '', '', '76', '3', NULL),
+(153, '2EC81EDB', '', '', '', '', '', '', '', '', '', '2', '6', NULL),
+(154, '2EC8A6EB', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(155, '2EC94C5B', '', '', '', '', '', '', '', '', '', '82', '7', NULL),
+(156, '2EC9D60B', '', '', '', '', '', '', '', '', '', '30', '7', NULL),
+(157, 'A7787A80', '', '', '', '', '', '', '', '', '', '52', '6', NULL),
+(158, 'A778B3A0', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(159, 'A778E200', '', '', '', '', '', '', '', '', '', '82', '6', NULL),
+(160, 'A778E210', '', '', '', '', '', '', '', '', '', '69', '7', NULL),
+(161, 'A778F360', '', '', '', '', '', '', '', '', '', '48', '9', NULL),
+(162, 'A7790330', '', '', '', '', '', '', '', '', '', '168', '7', NULL),
+(163, 'A7790340', '', '', '', '', '', '', '', '', '', '16', '1', NULL),
+(164, 'A7790AF0', '', '', '', '', '', '', '', '', '', '164', '7', NULL),
+(165, 'A7791B50', '', '', '', '', '', '', '', '', '', '40', '8', NULL),
+(166, 'A7791B80', '', '', '', '', '', '', '', '', '', '23', '8', NULL),
+(167, 'A7792FC0', '', '', '', '', '', '', '', '', '', '69', '4', NULL),
+(168, 'A779DF50', '', '', '', '', '', '', '', '', '', '41', '7', NULL),
+(169, 'A779F340', '', '', '', '', '', '', '', '', '', '94', '8', NULL),
+(170, 'A77A3080', '', '', '', '', '', '', '', '', '', '10', '10', NULL),
+(171, 'A77A3150', '', '', '', '', '', '', '', '', '', '55', '5', NULL),
+(172, 'A77A3170', '', '', '', '', '', '', '', '', '', '61', '6', NULL),
+(173, 'A77A3310', '', '', '', '', '', '', '', '', '', '30', '4', NULL),
+(174, 'A77A43B0', '', '', '', '', '', '', '', '', '', '119', '8', NULL),
+(175, 'A77A4700', '', '', '', '', '', '', '', '', '', '62', '7', NULL),
+(176, 'A77A5820', '', '', '', '', '', '', '', '', '', '98', '7', NULL),
+(177, 'A77A5910', '', '', '', '', '', '', '', '', '', '141', '8', NULL),
+(178, 'CAF3C16A', '', '', '', '', '', '', '', '', '', '2', '5', NULL),
+(179, 'CAF3D53A', '', '', '', '', '', '', '', '', '', '2', '7', NULL),
+(180, 'CAF4C6BA', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(181, 'CAF57D4A', '', '', '', '', '', '', '', '', '', '70', '1', NULL),
+(182, 'CAF5CD2A', '', '', '', '', '', '', '', '', '', '4', '4', NULL),
+(183, 'CAF6036A', '', '', '', '', '', '', '', '', '', '50', '2', NULL),
+(184, 'CAF6047A', '', '', '', '', '', '', '', '', '', '36', '6', NULL),
+(185, 'CAF7849A', '', '', '', '', '', '', '', '', '', '3', '7', NULL),
+(186, 'CAF784AA', '', '', '', '', '', '', '', '', '', '59', '10', NULL),
+(187, 'CAF784FA', '', '', '', '', '', '', '', '', '', '155', '9', NULL),
+(188, 'CAF7986A', '', '', '', '', '', '', '', '', '', '177', '8', NULL),
+(189, 'CAF7989A', '', '', '', '', '', '', '', '', '', '141', '7', NULL),
+(190, 'CAF7AC1A', '', '', '', '', '', '', '', '', '', '3', '8', NULL),
+(191, 'CAF7AC3A', '', '', '', '', '', '', '', '', '', '185', '10', NULL),
+(192, 'CAF7AC4A', '', '', '', '', '', '', '', '', '', '2', '5', NULL),
+(193, 'CAF7C01A', '', '', '', '', '', '', '', '', '', '41', '7', NULL),
+(194, 'CAF7C02A', '', '', '', '', '', '', '', '', '', '115', '10', NULL),
+(195, 'CAF7C03A', '', '', '', '', '', '', '', '', '', '122', '7', NULL),
+(196, 'CAF7C04A', '', '', '', '', '', '', '', '', '', '8', '7', NULL),
+(197, 'CAF7E8DA', '', '', '', '', '', '', '', '', '', '0', '0', NULL),
+(198, 'CAF7FC8A', '', '', '', '', '', '', '', '', '', '24', '5', NULL),
+(199, 'CAF7FCEA', '', '', '', '', '', '', '', '', '', '164', '5', NULL),
+(200, 'CAF8886A', '', '', '', '', '', '', 'perdu et supprime', '', '', '45', '7', NULL),
+(201, '123', '1', '2', 'client', '3', '', '', 'perdu et supprime', '3', '2', '123', '234', NULL),
+(202, '', '', '', '', '', '', '', '', '', '', '', '', NULL);
+
+
+--
+-- Table structure for table `t_tourneevigik`
+--
+
+CREATE TABLE IF NOT EXISTS `t_tourneevigik` (
+`tournee_id` int(11) NOT NULL,
+  `tournee_numero` varchar(100) NOT NULL,
+  `tournee_nom` varchar(100) NOT NULL,
+  `livreur` varchar(100) NOT NULL,
+  `remarques` varchar(250) NOT NULL,
+  `tournee_inactif` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_tourneevigik`
+--
+
+INSERT INTO `t_tourneevigik` (`tournee_id`, `tournee_numero`, `tournee_nom`, `livreur`, `remarques`, `tournee_inactif`) VALUES
+(1, 'F00223', 'nom tournee2', '1', 'test note', NULL),
+(2, 'DG0012', 'Tour_nom1', '2', 'notes', NULL),
+(3, 'dfvdv', 'zezdzd', '2', 'zdzdzd', NULL);
+
+--
+-- Table structure for table `t_tourneejouern`
+--
+
+CREATE TABLE IF NOT EXISTS `t_tourneejouern` (
+`tourneejouern_id` int(11) NOT NULL,
+  `tourneejouern_nom` varchar(100) NOT NULL,
+  `tourneejouern_numero` varchar(100) NOT NULL,
+  `tourneejouern_livreur` varchar(100) NOT NULL,
+  `tourneejouern_date` varchar(25) NOT NULL,
+  `valider` varchar(3) NOT NULL,
+  `tourneejouern_inactif` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_tourneejouern`
+--
+
+INSERT INTO `t_tourneejouern` (`tourneejouern_id`, `tourneejouern_nom`, `tourneejouern_numero`, `tourneejouern_livreur`, `tourneejouern_date`, `valider`, `tourneejouern_inactif`) VALUES
+(1, '2', 'DG0012', '2', '30/12/2016', 'yes', NULL),
+(2, '1', 'F00223', '1', '11/01/2017', 'yes', NULL);
+
+--
+-- Table structure for table `t_bornes`
+--
+
+CREATE TABLE IF NOT EXISTS `t_bornes` (
+`bornes_id` int(11) unsigned NOT NULL,
+  `borne_numero` varchar(100) NOT NULL,
+  `societe` varchar(100) NOT NULL,
+  `bornes_adresse` varchar(400) NOT NULL,
+  `bornes_inactif` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_bornes`
+--
+
+INSERT INTO `t_bornes` (`bornes_id`, `borne_numero`, `societe`, `bornes_adresse`, `bornes_inactif`) VALUES
+(1, 'DH234', '4', ' 123 tedst22sdsa sad', NULL),
+(2, 'GJH45T', '5', '    check adresse', NULL),
+(3, 'ecc', '2', '    dzadazdazdz', NULL);
+
+--
+-- Table structure for table `t_adressevigik`
+--
+
+CREATE TABLE IF NOT EXISTS `t_adressevigik` (
+`adresse_id` int(11) NOT NULL,
+  `adresse_numero` varchar(100) NOT NULL,
+  `adresse_nom` varchar(150) NOT NULL,
+  `rue` varchar(100) NOT NULL,
+  `type_voie` varchar(25) NOT NULL,
+  `ville` varchar(100) NOT NULL,
+  `code` varchar(100) NOT NULL,
+  `tournee` varchar(100) NOT NULL,
+  `ordre_tournee` varchar(100) NOT NULL,
+  `client` varchar(100) NOT NULL,
+  `heure_de_livraison` varchar(100) NOT NULL,
+  `type_de_livraison` varchar(100) NOT NULL,
+  `horaires_de_livraison` varchar(100) NOT NULL,
+  `contact` varchar(100) NOT NULL,
+  `telephone_contact` varchar(100) NOT NULL,
+  `derniere_facture` varchar(100) NOT NULL,
+  `derniere_facture_impayee` varchar(100) NOT NULL,
+  `avant_derniere` varchar(100) NOT NULL,
+  `bloque` varchar(3) NOT NULL,
+  `tourneejouern_resultat` varchar(25) NOT NULL,
+  `adresse_inactif` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_adressevigik`
+--
+
+INSERT INTO `t_adressevigik` (`adresse_id`, `adresse_numero`, `adresse_nom`, `rue`, `type_voie`, `ville`, `code`, `tournee`, `ordre_tournee`, `client`, `heure_de_livraison`, `type_de_livraison`, `horaires_de_livraison`, `contact`, `telephone_contact`, `derniere_facture`, `derniere_facture_impayee`, `avant_derniere`, `bloque`, `tourneejouern_resultat`, `adresse_inactif`) VALUES
+(1, '123', '', '234', '', 'vil1', 'code2', '2', '', '2', 'abc', 'boite_aux', 'def', '', '', '', '', '', '', 'non livre', NULL),
+(2, '32/14', '', 'newstreet', 'rue', 'paris', '001', '1', '', '3', 'delivery', 'boite_aux', '2222', '', '', '', '', '', '', 'non livre', NULL),
+(3, '1/2', '', 'newstreet1', 'avenue', 'paris11', '0024', '1', '', '3', '1231111', 'boite_aux', 'h123', 'venkatesh', '012345', 'w234', 'sew1', 'qwer', 'non', 'non livre', NULL),
+(4, '1234', '', 'newstreet', 'avenue', 'france', '0024', '1', '', '300', 'delivery', 'boite_aux', 'def', 'venkatesh', '012345', 'FA00688', 'FA00659', 'FA00464', 'non', 'livre', NULL),
+(5, '1/2', '', '234', 'avenue', 'france', '0024', '1', '', '300', 'abc', 'boite_aux', 'h123', 'venkatesh111', '0011', 'FA00688', 'FA00659', 'FA00464', 'oui', 'livre', NULL),
+(6, 'DECZEC', '', 'D3DZ', 'rue', 'ZXZX', '25555', '1', '', '300', 'XXXX', 'boite_aux', 'SSS', 'AZXZXZ', 'AZSZXDZ', 'FA00688', 'FA00659', 'FA00464', 'oui', 'non livre', NULL),
+(7, 'EZE', '', 'CDC', 'avenue', 'EF', 'FEC', '1', '', '300', 'DEC', 'boite_aux', 'CDCDE', 'ESDCDC', 'ZEDECECE', 'FA00688', 'FA00659', 'FA00464', '', '', NULL),
+(8, '3-001', '', 'New street', 'boulevard', 'ville1', '001-35', '1', '123', '2', 'her121', 'or_mains', 'qqqq', '012', '124', 'test3', 'aucun', 'aucun', 'oui', '', NULL),
+(9, 'dzdzd', '', 'sdzdzd', 'rue', 'zdzdzd', '554445', '1', '1', '15', '10-12', 'boite_aux', '15-17h', 'zdzzc', 'zczcc', 'aucun', 'aucun', 'aucun', 'non', '', NULL),
+(10, 'xxxxxxxxxxxxxxxxxxx', '', 'xxxxxxxxxxxxxxxxxx', 'rue', 'xxxxxxxxxxxxxxxxxxxxxxxxx', '911111', '1', '222', '17', '10-12', 'boite_aux', '12', 'xxxxxxxxxxxxxxxxxx', 'xxxxxxxxxxxxxxxxxxxx', 'aucun', 'aucun', 'aucun', '', '', NULL);
+
+
+
+--
+-- Indexes for table `t_vigik`
+--
+ALTER TABLE `t_vigik`
+ ADD PRIMARY KEY (`vigik_id`);
+
+--
+-- Indexes for table `t_tourneejouern`
+--
+ALTER TABLE `t_tourneejouern`
+ ADD PRIMARY KEY (`tourneejouern_id`);
+
+--
+-- Indexes for table `t_tourneevigik`
+--
+ALTER TABLE `t_tourneevigik`
+ ADD PRIMARY KEY (`tournee_id`);
+
+--
+-- Indexes for table `t_bornes`
+--
+ALTER TABLE `t_bornes`
+ ADD PRIMARY KEY (`bornes_id`);
+
+--
+-- Indexes for table `t_adressevigik`
+--
+ALTER TABLE `t_adressevigik`
+ ADD PRIMARY KEY (`adresse_id`);
+
+
+
+--
+-- AUTO_INCREMENT for table `t_vigik`
+--
+ALTER TABLE `t_vigik`
+MODIFY `vigik_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=203;
+
+--
+-- AUTO_INCREMENT for table `t_tourneevigik`
+--
+ALTER TABLE `t_tourneevigik`
+MODIFY `tournee_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `t_tourneejouern`
+--
+ALTER TABLE `t_tourneejouern`
+MODIFY `tourneejouern_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `t_bornes`
+--
+ALTER TABLE `t_bornes`
+MODIFY `bornes_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `t_adressevigik`
+--
+ALTER TABLE `t_adressevigik`
+MODIFY `adresse_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;

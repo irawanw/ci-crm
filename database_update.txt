@@ -1,0 +1,3 @@
+ALTER TABLE t_avoirs ADD COLUMN `avr_fichier` VARCHAR(100) NOT NULL DEFAULT '' AFTER avr_facture;
+
+Créer le répertoire fichiers/avoirs
